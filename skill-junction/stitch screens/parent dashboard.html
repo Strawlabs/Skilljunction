@@ -1,0 +1,492 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Parent Dashboard | Skill Junction</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-tint": "#3b4fd2",
+                        "on-surface": "#191c1e",
+                        "tertiary-container": "#006794",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#bbc3ff",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-container": "#3e52d5",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f4f6",
+                        "primary": "#2036bd",
+                        "secondary": "#505f76",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#454654",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#004e71",
+                        "on-primary-container": "#d7daff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#bbe1ff",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#c9e6ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "outline-variant": "#c5c5d7",
+                        "on-secondary-container": "#54647a",
+                        "surface-dim": "#d8dadc",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#001e2f",
+                        "background": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "on-primary-fixed": "#000d60",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "outline": "#757686",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-fixed": "#dfe0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "section-gap": "64px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid #e6e8ea;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full border-r border-outline-variant bg-surface-container-lowest w-64 z-50">
+<div class="p-stack-md flex items-center gap-stack-sm">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">Skill Junction</span>
+</div>
+<div class="px-stack-md py-stack-md">
+<div class="flex items-center gap-stack-sm p-stack-sm bg-surface-container-low rounded-xl mb-stack-lg">
+<img alt="Parent Avatar" class="w-10 h-10 rounded-full bg-primary-fixed-dim object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACi5EuZD-AGYTvOR8ER6fF0PJ6Iue5hNGdWO0WcU11O_Ul25w-jNPkSXX_lLwMD_aZeNq1YOaJtrn9IFCP-v90cnM8OdMQEXOa82f0w9lS-Su8ainye2mJQZSyL4VgCLMBe3l9nbvhVgY3-HXjf4Q6qb9-Ze_s6BlN3dQy3hr5k7Vn05oDgHRLGfYyQt3WXg86mVHnU5KgSQtf704nLiw6oXqaKFCdk5C8Gtixs-wNAcTkXLzzpBroiVwlVd17H-RFjYr5HKQ53Lg">
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md text-on-surface truncate">Eleanor Vance</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Parent</p>
+</div>
+</div>
+<nav class="space-y-stack-sm">
+<a class="flex items-center gap-stack-sm bg-primary-container text-on-primary rounded-lg px-stack-sm py-2 font-semibold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container transition-all rounded-lg px-stack-sm py-2" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-md text-label-md">Classes</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container transition-all rounded-lg px-stack-sm py-2" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container transition-all rounded-lg px-stack-sm py-2" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Payments</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container transition-all rounded-lg px-stack-sm py-2" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-md text-label-md">Progress</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container transition-all rounded-lg px-stack-sm py-2" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-stack-md border-t border-outline-variant">
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container transition-all rounded-lg px-stack-sm py-2" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container transition-all rounded-lg px-stack-sm py-2" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop transition-all max-w-[1200px]">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md mb-stack-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Parent Dashboard</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Welcome back, Eleanor. Here's your children's learning status.</p>
+</div>
+<!-- Child Selector -->
+<div class="relative w-full md:w-auto">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase mb-1 block ml-1 tracking-wider">Active Profile</label>
+<div class="flex items-center gap-stack-sm bg-white border border-outline-variant px-stack-md py-stack-sm rounded-xl cursor-pointer hover:border-primary hover:shadow-sm transition-all group">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-lg">face</span>
+</div>
+<div class="flex-1 pr-stack-md min-w-[100px]">
+<span class="font-label-md text-label-md text-on-surface">Oliver Vance</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Bento Layout Dashboard -->
+<div class="bento-grid">
+<!-- Recent Attendance -->
+<section class="col-span-12 lg:col-span-8 glass-card rounded-xl p-stack-md" style="opacity: 1; transform: translateY(0px); transition: 0.5s ease-out;">
+<div class="flex justify-between items-center mb-stack-md">
+<div class="flex items-center gap-stack-sm">
+<div class="p-2 bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Recent Attendance</h2>
+</div>
+<button class="text-primary font-label-md text-label-md hover:bg-primary/5 px-stack-sm py-1 rounded-full transition-colors">View History</button>
+</div>
+<div class="grid grid-cols-5 gap-stack-sm">
+<!-- Day Items -->
+<div class="flex flex-col items-center gap-2 bg-surface-container-low p-stack-sm rounded-xl border border-outline-variant/30 hover:border-secondary transition-all">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-tighter">Mon</span>
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">Oct 21</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-low p-stack-sm rounded-xl border border-outline-variant/30 hover:border-secondary transition-all">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-tighter">Tue</span>
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">Oct 22</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-low p-stack-sm rounded-xl border border-outline-variant/30 hover:border-secondary transition-all">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-tighter">Wed</span>
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">Oct 23</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-low p-stack-sm rounded-xl border border-outline-variant/30 hover:border-error transition-all">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-tighter">Thu</span>
+<div class="w-10 h-10 rounded-full bg-error text-on-error flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">close</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">Oct 24</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface-container-low p-stack-sm rounded-xl border border-outline-variant/30 hover:border-primary transition-all">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-tighter">Fri</span>
+<div class="w-10 h-10 rounded-full bg-primary-container text-primary flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">today</span>
+</div>
+<span class="text-[11px] font-medium text-primary">Today</span>
+</div>
+</div>
+<div class="mt-stack-md p-stack-sm bg-tertiary/5 border border-tertiary/10 rounded-xl flex items-start gap-stack-sm">
+<span class="material-symbols-outlined text-tertiary text-lg mt-0.5">info</span>
+<p class="font-body-md text-body-md text-on-tertiary-fixed-variant">Oliver was excused on Thursday for a medical appointment.</p>
+</div>
+</section>
+<!-- Fee Status Widget -->
+<section class="col-span-12 lg:col-span-4 glass-card rounded-xl p-stack-md relative overflow-hidden group" style="opacity: 1; transform: translateY(0px); transition: 0.5s ease-out;">
+<div class="absolute top-0 right-0 w-32 h-32 bg-error/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-stack-md relative z-10">
+<div>
+<h2 class="font-headline-md text-headline-md">Fee Status</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-error-container text-error text-[10px] font-bold uppercase tracking-widest mt-2">
+<span class="w-1.5 h-1.5 rounded-full bg-error mr-1.5 animate-pulse"></span>
+                            Pending Payment
+                        </span>
+</div>
+<div class="p-2 bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+</div>
+</div>
+<div class="mb-stack-lg relative z-10">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">October 2024 Tuition</p>
+<p class="font-display-lg text-headline-lg text-on-surface">$240.00</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-error text-sm">event</span>
+<p class="text-on-surface-variant text-[12px]">Due by Oct 30, 2024</p>
+</div>
+</div>
+<div class="space-y-stack-sm relative z-10">
+<button class="w-full bg-primary text-on-primary py-stack-sm rounded-xl font-label-md text-label-md flex items-center justify-center gap-stack-sm hover:shadow-lg hover:brightness-110 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-lg">credit_card</span>
+                        Pay Now
+                    </button>
+<button class="w-full text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Download Invoice
+                    </button>
+</div>
+</section>
+<!-- Latest Quiz Scores -->
+<section class="col-span-12 lg:col-span-7 glass-card rounded-xl p-stack-md" style="opacity: 1; transform: translateY(0px); transition: 0.5s ease-out;">
+<div class="flex justify-between items-center mb-stack-md">
+<div class="flex items-center gap-stack-sm">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">grade</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Latest Quiz Scores</h2>
+</div>
+<button class="text-outline text-label-sm font-semibold hover:text-on-surface transition-colors">See All</button>
+</div>
+<div class="space-y-stack-sm">
+<!-- Score Row -->
+<div class="flex items-center justify-between p-stack-sm hover:bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<div class="flex items-center gap-stack-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">functions</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Algebra Basics</p>
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 2 days ago
+                                </p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-secondary">92%</p>
+<p class="text-[10px] uppercase font-bold text-secondary/80 tracking-widest">Excellent</p>
+</div>
+</div>
+<!-- Score Row -->
+<div class="flex items-center justify-between p-stack-sm hover:bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<div class="flex items-center gap-stack-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">language</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Grammar Mastery</p>
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> Yesterday
+                                </p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-secondary">85%</p>
+<p class="text-[10px] uppercase font-bold text-secondary/80 tracking-widest">Good</p>
+</div>
+</div>
+<!-- Score Row -->
+<div class="flex items-center justify-between p-stack-sm hover:bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<div class="flex items-center gap-stack-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">biotech</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Cell Biology</p>
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 4 days ago
+                                </p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-tertiary">78%</p>
+<p class="text-[10px] uppercase font-bold text-tertiary/80 tracking-widest">Average</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Learning Progress Radial Widget -->
+<section class="col-span-12 lg:col-span-5 glass-card rounded-xl p-stack-md flex flex-col items-center" style="opacity: 1; transform: translateY(0px); transition: 0.5s ease-out;">
+<div class="w-full text-left mb-stack-sm">
+<h2 class="font-headline-md text-headline-md">Learning Milestone</h2>
+</div>
+<div class="relative flex items-center justify-center py-stack-lg">
+<!-- Progress Circle SVG -->
+<svg class="w-44 h-44 transform -rotate-90">
+<circle class="text-surface-container-high" cx="88" cy="88" fill="transparent" r="76" stroke="currentColor" stroke-width="10"></circle>
+<circle class="text-secondary transition-all duration-1000 ease-out" cx="88" cy="88" fill="transparent" r="76" stroke="currentColor" stroke-dasharray="477" stroke-dashoffset="119" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-display-lg text-4xl text-on-surface">75%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Path</span>
+</div>
+</div>
+<div class="text-center w-full mt-4">
+<div class="flex items-center justify-center gap-2 mb-stack-md text-secondary">
+<span class="material-symbols-outlined">stars</span>
+<p class="font-body-md text-body-md font-medium text-on-surface">5 levels away from "Pro Coder" badge!</p>
+</div>
+<button class="w-full py-stack-sm border border-outline-variant text-on-surface font-label-md text-label-md rounded-xl hover:bg-surface-container-high transition-all flex items-center justify-center gap-2">
+                        View Learning Path
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Upcoming Events / Schedule -->
+<section class="col-span-12 glass-card rounded-xl p-stack-md" style="opacity: 1; transform: translateY(0px); transition: 0.5s ease-out;">
+<div class="flex justify-between items-center mb-stack-md">
+<div class="flex items-center gap-stack-sm">
+<div class="p-2 bg-tertiary/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary">event_note</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Upcoming Schedule</h2>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                        Open Calendar
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<div class="group bg-primary-container/10 p-stack-md rounded-xl border-l-4 border-l-primary hover:shadow-md transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<p class="text-primary font-bold text-[11px] uppercase tracking-wider">Today, 4:00 PM</p>
+<span class="material-symbols-outlined text-primary text-lg">videocam</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1 group-hover:text-primary transition-colors">Advanced Mathematics</h3>
+<p class="text-body-sm text-on-surface-variant mb-3">Tutor: Dr. Aris Thorne</p>
+<button class="text-primary font-bold text-[12px] flex items-center gap-1 group-hover:gap-2 transition-all">Join Session <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div class="bg-surface-container-low p-stack-md rounded-xl border-l-4 border-l-secondary/50 opacity-80 hover:opacity-100 transition-opacity">
+<p class="text-on-surface-variant font-bold text-[11px] uppercase tracking-wider mb-2">Tomorrow, 10:00 AM</p>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">History &amp; Civilization</h3>
+<p class="text-body-sm text-on-surface-variant mb-3">Tutor: Sarah Jenkins</p>
+<span class="inline-flex items-center gap-1 text-on-surface-variant/50 text-[11px] font-bold uppercase">
+<span class="material-symbols-outlined text-sm">lock</span> Waiting
+                        </span>
+</div>
+<div class="bg-surface-container-low p-stack-md rounded-xl border-l-4 border-l-tertiary/50 opacity-80 hover:opacity-100 transition-opacity">
+<p class="text-on-surface-variant font-bold text-[11px] uppercase tracking-wider mb-2">Oct 26, 2:30 PM</p>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Creative Writing Workshop</h3>
+<p class="text-body-sm text-on-surface-variant mb-3">Tutor: Marcus Aurel</p>
+<span class="inline-flex items-center gap-1 text-on-surface-variant/50 text-[11px] font-bold uppercase">
+<span class="material-symbols-outlined text-sm">lock</span> Waiting
+                        </span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+
+<!-- Mobile Nav Bar -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant flex justify-around py-stack-sm z-50 shadow-lg">
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Learn</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Fees</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</div>
+<script>
+        // Micro-interactions for Child Selector
+        const childSelector = document.querySelector('.relative.group div') || document.querySelector('.relative div.group');
+        if (childSelector) {
+            childSelector.addEventListener('click', function() {
+                this.classList.toggle('border-primary');
+                this.classList.toggle('shadow-md');
+            });
+        }
+
+        // Animation on scroll for cards (Simple version)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            card.style.transition = "all 0.5s ease-out";
+            observer.observe(card);
+        });
+    </script>
+
+
+</body></html>

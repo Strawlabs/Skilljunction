@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill Junction | Academic Modernism in Learning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .glass-nav {
+            background: rgba(247, 249, 251, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .zebra-row:nth-child(even) {
+            background-color: #f2f4f6;
+        }
+        .course-card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .course-card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+        .premium-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-tint": "#3b4fd2",
+                        "on-surface": "#191c1e",
+                        "tertiary-container": "#006794",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#bbc3ff",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-container": "#3e52d5",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f4f6",
+                        "primary": "#2036bd",
+                        "secondary": "#505f76",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#454654",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#004e71",
+                        "on-primary-container": "#d7daff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#bbe1ff",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#c9e6ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "outline-variant": "#c5c5d7",
+                        "on-secondary-container": "#54647a",
+                        "surface-dim": "#d8dadc",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#001e2f",
+                        "background": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "on-primary-fixed": "#000d60",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "outline": "#757686",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-fixed": "#dfe0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "section-gap": "80px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden antialiased">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-16 glass-nav border-b border-outline-variant/30">
+<div class="flex items-center gap-10">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">Skill Junction</h1>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors font-semibold" href="#courses">Courses</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors font-semibold" href="#tutors">Tutors</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors font-semibold" href="#blog">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">account_circle</span>
+</div>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-xl font-label-md text-label-md hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 font-bold">Join Class</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full min-h-[700px] flex items-center px-margin-mobile md:px-margin-desktop bg-surface overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-container-max mx-auto">
+<div class="md:col-span-7 flex flex-col justify-center gap-stack-lg">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm w-fit">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    Modern Professional Education
+                </div>
+<h2 class="font-display-lg text-display-lg text-on-surface leading-[1.1]">
+                    Elevate Your Skills with <br/><span class="text-primary">Academic Precision</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    A curated learning ecosystem designed for modern professionals. Master complex subjects through our authoritative information architecture and world-class tutoring.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-xl font-headline-md text-headline-md hover:shadow-xl hover:shadow-primary/30 transition-all active:scale-95">Start Learning</button>
+<button class="border-2 border-primary/20 text-primary px-10 py-4 rounded-xl font-headline-md text-headline-md hover:bg-primary/5 hover:border-primary transition-all active:scale-95">Join as Tutor</button>
+</div>
+</div>
+<div class="md:col-span-5 hidden md:block">
+<div class="relative h-[550px] w-full rounded-xl overflow-hidden shadow-2xl premium-shadow rotate-1 transform-gpu">
+<img alt="Student learning" class="w-full h-full object-cover" data-alt="A focused young professional woman wearing modern headphones, working on a sleek silver laptop in a bright, minimalist library environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2DSmyNIJmnob_aXm7HYb1azWOF5z8MvwybvYEZGTUj-1HPX3x0FuzGmgXQ3OLe7CHqQO8AjJiTgQofCI3ZK-2sKvMF-hOaTeHjPKXhQkYjNYfPEA2VUVUTJv9BwOPgGjagKsF0dAtWmdN7VjDT6TKXvKiujVolDIv5xTyzoSQgkl0p83UzYgY5vK5JY05zl_FNLXt6evDSqKPc2KQSPJBaM0ajTeX6tz_H8Siqpwop6L1YNbLTvwsEMhP3_u9Tpj3YuZzsRJo-P4"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Courses Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-background" id="courses">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="text-primary font-label-md tracking-[0.15em] uppercase font-bold">Expertise</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-2">Featured Courses</h3>
+</div>
+<a class="text-primary font-label-md flex items-center gap-2 hover:gap-3 transition-all font-bold" href="#">
+                    View All Courses <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Course Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden shadow-sm course-card-hover group">
+<div class="aspect-video w-full relative overflow-hidden">
+<img alt="Data Science" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo0Se2XhQS0tYQJzG0p2fiAaGAYIPza0Kqgf5TjMRJxVvS2ebHv3OFrkop7OJc-C-x0k8-al0g9zFzZFo3DL9Iaed-F9wZsdwAqsCxshtevNHw8IbtfNkVa6KHgYa3D8OSwJD6-OH29oHszH26Q9MfwreJkpZ3U2sMmIQbSztIM2t9QUwn5kMHxQ0YINZFLm3imYisIS_fV_jP2UOLwYuUAS00g87Dzc6sbxX2BCo3OcSDo5Lo8AOzNAkJnJUMOy4rx6HhTsyTeU0"/>
+<span class="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm shadow-lg">Best Seller</span>
+</div>
+<div class="p-8 flex flex-col gap-3">
+<p class="text-primary font-label-sm font-bold uppercase tracking-wider">Technology</p>
+<h4 class="font-headline-md text-headline-md text-on-surface">Advanced Data Architecture</h4>
+<p class="text-on-surface-variant font-body-md line-clamp-2">Master the complexities of modern database systems and scalable architecture.</p>
+<div class="flex justify-between items-center mt-6 pt-6 border-t border-outline-variant/30">
+<span class="font-headline-md text-primary font-bold">$129.00</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md font-bold text-on-surface">4.9</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden shadow-sm course-card-hover group">
+<div class="aspect-video w-full relative overflow-hidden">
+<img alt="Strategic Management" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU0A-pKsqzRT3PuEH8fPf_aCG29SyD8nFwJ_o0qkfuPFDRN1noxEgMgPj3GAOeygBsrQWQsnOAKIlto24AZwQY1eR12_yjKSYGHnC0v1DYMyB95KhvqBPQN8XS9IeuJPec1mObjjo8OLNcsiqvKzunyhQW3UpJ1CcUejkVMeS-vPasMhlSEbSdRBkQVg6tW2Fs6NfjguKe3PtsPKLh5bAw5yROP7zvL1e_6b37A6UZvfU9ZBQ881KMA_zIoNKf_Mrktcr6F1Mo9B0"/>
+</div>
+<div class="p-8 flex flex-col gap-3">
+<p class="text-primary font-label-sm font-bold uppercase tracking-wider">Business</p>
+<h4 class="font-headline-md text-headline-md text-on-surface">Strategic Leadership Dynamics</h4>
+<p class="text-on-surface-variant font-body-md line-clamp-2">Develop the frameworks necessary for leading global teams in a volatile economy.</p>
+<div class="flex justify-between items-center mt-6 pt-6 border-t border-outline-variant/30">
+<span class="font-headline-md text-primary font-bold">$199.00</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md font-bold text-on-surface">4.8</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden shadow-sm course-card-hover group">
+<div class="aspect-video w-full relative overflow-hidden">
+<img alt="Visual Design" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOafUIQazqulVJCH2A1CneUBfZmp4DbEVpoUVbTlClKLAhiwjw4ykUn5iObIh5vmprN2Pxyg55bH9AIfssazMS2VOE81iWN7HxrDYOFTWqZQI-We80bPS3uIFUEr6l73nHDKfxXuCeHIWJiGxvrzVqUfNb3EkJ9jrs9PCRuxVA7Ps0iHvVElCsK8Ln4Sc2627OjmnflNdJZ6BXUpYMh1UpxuaQePCq98GXdayJhBxQqdUG9afL_uxfrWFmdxbhty37mqCzqhCoWaw"/>
+</div>
+<div class="p-8 flex flex-col gap-3">
+<p class="text-primary font-label-sm font-bold uppercase tracking-wider">Design</p>
+<h4 class="font-headline-md text-headline-md text-on-surface">UI Design Systems Mastery</h4>
+<p class="text-on-surface-variant font-body-md line-clamp-2">Learn to build comprehensive, scalable design systems for enterprise-grade applications.</p>
+<div class="flex justify-between items-center mt-6 pt-6 border-t border-outline-variant/30">
+<span class="font-headline-md text-primary font-bold">$149.00</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md font-bold text-on-surface">5.0</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Tutors Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="tutors">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Taught by Industry Authorities</h3>
+<p class="text-on-surface-variant max-w-2xl mx-auto mt-4 text-body-lg">Learn from professionals who bring real-world institutional experience to your screen.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Tutor 1 -->
+<div class="glass-card p-10 rounded-xl text-center flex flex-col items-center gap-6 shadow-sm hover:shadow-xl transition-all border border-outline-variant/30">
+<div class="relative">
+<img alt="Dr. Aris Thorne" class="w-28 h-28 rounded-full object-cover border-4 border-surface shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkwHthVntMd9wEfi9j5FhvIZmihyW6V2YYcAjx4xu8tUq0InLnFZz8N11P_BDLtL5Rp2OULQLOlYWEYeSvQm3mtU4EOfrWECl3ns1IVj3fnzRTGaP9iIXGHymgYCGe4yQZ890ut_U6Jn61cn7uX9Obn0ydG01HUn5tEk0bfIEkD52lzmNZAw5bMwGn1UrNZAZrfsl_RAUlTtcDXe3ZksS_zoARowFSVAYsXe1-ube4cY6F4YhObzr1rNTK5SnESqYDzJukl39y2qA"/>
+<div class="absolute bottom-1 right-1 bg-primary text-on-primary rounded-full p-1.5 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface font-bold">Dr. Aris Thorne</h5>
+<p class="text-primary font-label-md font-semibold mt-1">Strategic Management</p>
+</div>
+</div>
+<!-- Tutor 2 -->
+<div class="glass-card p-10 rounded-xl text-center flex flex-col items-center gap-6 shadow-sm hover:shadow-xl transition-all border border-outline-variant/30">
+<div class="relative">
+<img alt="Elena Vance" class="w-28 h-28 rounded-full object-cover border-4 border-surface shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi_Sy7JWxGwunf7C-cUhoYSp8aByiVOB9ZFzO_tx6I7CrrsHUNYhAxIWNSDE8sZkdukYnjLfAhexx4JO67JyoS0UnuXuN4fmRMH3w9uxL-Y5-XmeLS3hsRpust1JwsqAwKF51XNTf9V4OzaVdoOYyMhfIBxb7yOooINOeEe8yzO_an5DlftuD3_ztDGWSBiszYPxV8vUt2NEafXQ6KZ1gTatRgpVZlABLHv4ZQRwaVpv6BzWK5aV3wcUglfDzEFJ9jXm8qOmDN5x8"/>
+<div class="absolute bottom-1 right-1 bg-primary text-on-primary rounded-full p-1.5 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface font-bold">Elena Vance</h5>
+<p class="text-primary font-label-md font-semibold mt-1">Head of Data Science</p>
+</div>
+</div>
+<!-- Tutor 3 -->
+<div class="glass-card p-10 rounded-xl text-center flex flex-col items-center gap-6 shadow-sm hover:shadow-xl transition-all border border-outline-variant/30">
+<div class="relative">
+<img alt="Marcus Chen" class="w-28 h-28 rounded-full object-cover border-4 border-surface shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPS6OGJ9QIKI3eKmsdJm7NuGM_hsZSFFHAGDC1hbFWyq1x_j3w5z9Sji22zEF5sUE4CdInsBczSUkpixivTTOSuLfULU7ZfPINBpJ8E4rQFBJUTuMqc9QakSJoHRD7utv6tF2h_RhYAR8mMAmoKI5TuAsjKe6S_36R2i8gkZqXC0jjagAnRByANkXfWVInH1Vzeq6kOq7OFfVwdmDIrBpGHr6NLWr9YtHtEWNYS6Ulb75iVQtm4zHYgIpxVq5tq199n8WvCo3u0O4"/>
+<div class="absolute bottom-1 right-1 bg-primary text-on-primary rounded-full p-1.5 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface font-bold">Marcus Chen</h5>
+<p class="text-primary font-label-md font-semibold mt-1">Lead UI Designer</p>
+</div>
+</div>
+<!-- Tutor 4 -->
+<div class="glass-card p-10 rounded-xl text-center flex flex-col items-center gap-6 shadow-sm hover:shadow-xl transition-all border border-outline-variant/30">
+<div class="relative">
+<img alt="Sarah Jenkins" class="w-28 h-28 rounded-full object-cover border-4 border-surface shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9acdcfIFqQiWbZDJ_-0OYp0EjN5TCGNLmg10l8pzXhN8tSFMNH-lH0-yraGSpkCvANEHLmZzmsHhKWh8DH47UBzCMbo-ITdsAMt0uhHkXxfLU39RelOCkWJk1UI7qAXk6uaGDMb3rxlfODdVdyCPl1hw4qZqPPnYuPWX--0FhIVJ6IgPQfS0adrfpsappaQE3PsCg5IJ_fqs9A8VFObcaExzUSEN64t7vN45iL5ZWLtMayAQef97ukBU6a13JOvPEF-RpMX388fE"/>
+<div class="absolute bottom-1 right-1 bg-primary text-on-primary rounded-full p-1.5 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h5 class="font-headline-sm text-headline-sm text-on-surface font-bold">Sarah Jenkins</h5>
+<p class="text-primary font-label-md font-semibold mt-1">Cybersecurity Analyst</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-on-surface text-surface overflow-hidden relative">
+<div class="absolute inset-0 opacity-5">
+<div class="grid grid-cols-12 h-full">
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+<div class="border-r border-surface-variant/30 h-full"></div>
+</div>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto text-center px-4">
+<span class="text-primary-fixed-dim font-label-md uppercase tracking-[0.3em] mb-6 block font-bold">Success Stories</span>
+<div class="min-h-[350px] flex items-center justify-center" id="testimonial-slider">
+<div class="testimonial-item opacity-100 transition-opacity duration-700">
+<blockquote class="font-headline-lg text-headline-lg md:text-[36px] italic leading-snug font-medium">
+                        "The information architecture of Skill Junction is unparalleled. It provided exactly the structured environment I needed to pivot into Enterprise Architecture."
+                    </blockquote>
+<div class="mt-12 flex flex-col items-center gap-2">
+<p class="font-headline-sm text-primary-fixed-dim text-xl font-bold">Julian Pierce</p>
+<p class="text-surface-variant font-label-md opacity-70 tracking-wide uppercase">Solutions Architect at TechFlow</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center gap-6 mt-12">
+<button class="w-14 h-14 rounded-full border-2 border-surface-variant/30 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-on-primary transition-all group">
+<span class="material-symbols-outlined text-[28px] group-active:scale-90 transition-transform">chevron_left</span>
+</button>
+<button class="w-14 h-14 rounded-full border-2 border-surface-variant/30 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-on-primary transition-all group">
+<span class="material-symbols-outlined text-[28px] group-active:scale-90 transition-transform">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Blog Preview -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-background" id="blog">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-center mb-12">
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Academic Insights</h3>
+<button class="text-primary font-label-md font-bold flex items-center gap-2 group">Read All Articles <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">trending_flat</span></button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+<!-- Large Post -->
+<div class="md:col-span-7 bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 group cursor-pointer shadow-sm hover:shadow-xl transition-all">
+<div class="h-[400px] w-full overflow-hidden">
+<img alt="Learning science" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnyaAbh6UIgXBfG_35-QGHWz2Nsn3zx1B1jK2m7f5lc4PQN_rGObc68XQh7u7LHgv_A7J78o89CdRjx5NGQirdOUS8s_J9c2Qu7v6sdUCvED2lDe2XlI5_XNKKD_jiLlVFN-1GqBQfN2nTNYwa7W2DNnxcb2YH_U5PSJyNTPZy-doX-fgW2Z0OYN1d0miGxaQpSDjyUkJfHo1BWosVCU0VZvwHoBShM0gy-H-e0INA_TSfw_IdBPmZvQDqV_Ukzdft9sxk34uicKA"/>
+</div>
+<div class="p-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-sm font-bold uppercase">Psychology</span>
+<span class="text-outline font-label-sm font-medium">8 min read</span>
+</div>
+<h4 class="font-display-lg text-headline-lg text-on-surface mb-4 leading-tight group-hover:text-primary transition-colors">The Cognitive Science of Skill Acquisition</h4>
+<p class="text-on-surface-variant font-body-md mb-8 text-lg">Understanding how the brain processes new information can drastically reduce the time needed to master complex professional disciplines.</p>
+<button class="flex items-center gap-2 text-primary font-label-md font-bold group/btn">Read More <span class="material-symbols-outlined text-[20px] group-hover/btn:translate-x-1 transition-transform">arrow_outward</span></button>
+</div>
+</div>
+<!-- Side Posts -->
+<div class="md:col-span-5 flex flex-col gap-8">
+<div class="flex gap-6 group cursor-pointer p-4 rounded-xl hover:bg-surface-container transition-all">
+<div class="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm">
+<img alt="Remote work" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC97Hp2HJ0QDI2gW4o0Bue0MncbrJsZxQ-Ls0J4jJD3a3qlNJvoAwbgQytbiGcciqV5hKCifbJLaqAaUp1FMsm0EqISJg8ehvLe5HmjDfXNBt7sGXgNlMm5-_a7G2Ey92bKYkW-DM0sJmVMH_loxz-kWJqpxVfzCLRJJdGpGFVh_6-LAp3Tkqhi3luNpHj2Uea2K85TkBxe1nHCcbQvE0WtjQTWbJDF9bqU-GWOSYt7TduPUHIlh6IOjsZ-UHGGW3z0q1-F-XBW0RE"/>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-primary font-label-sm font-bold uppercase">Leadership</span>
+<h5 class="font-headline-sm text-headline-sm text-on-surface mt-2 group-hover:text-primary transition-colors leading-tight">Leading in the Remote Era</h5>
+<p class="text-on-surface-variant font-body-sm line-clamp-2 mt-2">Frameworks for managing high-performance distributed teams.</p>
+</div>
+</div>
+<div class="flex gap-6 group cursor-pointer p-4 rounded-xl hover:bg-surface-container transition-all">
+<div class="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm">
+<img alt="Cybersecurity" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqxIh6B9l-F1vfaD9LhvN57tVqVc-sis2hLVEE_moPwmgCiRtgGwWZPvNrLbNEdcdxrryaksdNAsQrQa02_2RGwkkgL_im6T0OpWfeAGdoOP7u5xU4sCPd3XBbP2stYEh9ddiJQt5fTNhzpxU4lneXKL1zo-qSCphEhU14pJqqCAGXPDM_rIesJNpj4KfqJkCAssT1ivAP1jONzOhYFKMbyo4-QC0C0O8gIRUrIOx47FtvXeom2Ub9bhvulafVgTtXmZSX11T4Thw"/>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-primary font-label-sm font-bold uppercase">Security</span>
+<h5 class="font-headline-sm text-headline-sm text-on-surface mt-2 group-hover:text-primary transition-colors leading-tight">Zero-Trust Architectures</h5>
+<p class="text-on-surface-variant font-body-sm line-clamp-2 mt-2">The new standard for institutional data protection.</p>
+</div>
+</div>
+<div class="flex gap-6 group cursor-pointer p-4 rounded-xl hover:bg-surface-container transition-all">
+<div class="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm">
+<img alt="Design" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlYg081Z0Jh_FldSI-YJpM-sIdluE6d15rZ-7rH1bTkb6ciVuxweWMvOAYHTvWqtAxRefrMmGfbLtsow4E_yyO425lFsqodl1vZYtwdtWqy0_UkoNCU8ifUiOKZeog003ggRHKiufb9QdxrmLZ0aAWvXTx5yuy6g8b1pVh1Ijs4GxQ72_jZA4S7FSbbjb4tZrn-A03U1PWhJUj4YjACcRRmudz4QZfs4hCqIWH-pil9EYledPX3-4NMk8QkIg5Q4FUwnbRiHaSa7M"/>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-primary font-label-sm font-bold uppercase">Design</span>
+<h5 class="font-headline-sm text-headline-sm text-on-surface mt-2 group-hover:text-primary transition-colors leading-tight">Visual Balance in UI</h5>
+<p class="text-on-surface-variant font-body-sm line-clamp-2 mt-2">Applying mathematical harmony to digital interface layouts.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant/30" id="contact">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface leading-tight">Connect with <br/><span class="text-primary">Excellence</span></h3>
+<p class="text-on-surface-variant mt-6 font-body-lg text-xl leading-relaxed">Have questions about our curriculum or institutional partnerships? Our academic advisors are ready to assist you.</p>
+<div class="mt-12 space-y-8">
+<div class="flex items-center gap-6 group">
+<div class="w-14 h-14 rounded-2xl bg-primary text-on-primary flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]">mail</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface font-bold">Email Support</p>
+<p class="text-on-surface-variant font-body-sm text-lg">admissions@skilljunction.edu</p>
+</div>
+</div>
+<div class="flex items-center gap-6 group">
+<div class="w-14 h-14 rounded-2xl bg-primary text-on-primary flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]">location_on</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface font-bold">Global Headquarters</p>
+<p class="text-on-surface-variant font-body-sm text-lg">42 Academic Square, London, UK</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-10 md:p-12 rounded-xl shadow-2xl border border-white/50">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-md text-on-surface mb-2 font-bold">Full Name</label>
+<input class="w-full h-14 border border-outline-variant/50 rounded-xl px-4 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none bg-white/50" placeholder="Jane Doe" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-2 font-bold">Email Address</label>
+<input class="w-full h-14 border border-outline-variant/50 rounded-xl px-4 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none bg-white/50" placeholder="jane@company.com" type="email"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-2 font-bold">Inquiry Type</label>
+<select class="w-full h-14 border border-outline-variant/50 rounded-xl px-4 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none bg-white/50 appearance-none">
+<option>Course Admissions</option>
+<option>Tutor Partnership</option>
+<option>Technical Support</option>
+<option>General Inquiry</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-2 font-bold">Message</label>
+<textarea class="w-full border border-outline-variant/50 rounded-xl p-4 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none bg-white/50" placeholder="How can we help you reach your goals?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary h-14 rounded-xl font-headline-sm font-bold hover:shadow-xl hover:shadow-primary/30 transition-all active:scale-[0.98]" type="submit">Submit Inquiry</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-margin-mobile md:px-margin-desktop bg-on-surface text-surface-bright">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+<div class="flex flex-col items-start gap-4">
+<h4 class="font-headline-md text-headline-md text-surface-bright font-black tracking-tight">Skill Junction</h4>
+<p class="font-body-sm text-body-sm text-surface-variant/70 max-w-xs leading-relaxed">
+                © 2024 Skill Junction. <br/>Academic Modernism in Learning. Empowing the next generation of professional leaders through structure and expertise.
+            </p>
+</div>
+<div class="flex flex-wrap gap-10">
+<a class="text-surface-variant/80 hover:text-white transition-colors font-label-md uppercase tracking-widest text-sm" href="#">Courses</a>
+<a class="text-surface-variant/80 hover:text-white transition-colors font-label-md uppercase tracking-widest text-sm" href="#">Tutors</a>
+<a class="text-surface-variant/80 hover:text-white transition-colors font-label-md uppercase tracking-widest text-sm" href="#">About Us</a>
+<a class="text-surface-variant/80 hover:text-white transition-colors font-label-md uppercase tracking-widest text-sm" href="#">Privacy Policy</a>
+</div>
+<div class="flex gap-4">
+<a class="w-12 h-12 rounded-xl border border-surface-variant/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</a>
+<a class="w-12 h-12 rounded-xl border border-surface-variant/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</a>
+<a class="w-12 h-12 rounded-xl border border-surface-variant/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- FAB -->
+<button class="fixed bottom-6 right-6 md:bottom-10 md:right-10 w-16 h-16 bg-primary text-on-primary rounded-2xl shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group hover:shadow-primary/40">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="absolute right-20 bg-on-surface text-surface px-4 py-2 rounded-xl text-label-sm opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0 whitespace-nowrap pointer-events-none font-bold shadow-xl">Chat with Admissions</span>
+</button>
+<script>
+    // Enhanced Testimonial Slider Logic
+    const testimonials = [
+        {
+            quote: "The information architecture of Skill Junction is unparalleled. It provided exactly the structured environment I needed to pivot into Enterprise Architecture.",
+            name: "Julian Pierce",
+            title: "Solutions Architect at TechFlow"
+        },
+        {
+            quote: "The quality of the tutors here is unmatched. They don't just teach theory; they teach from deep, lived institutional experience.",
+            name: "Sophia Martinez",
+            title: "Senior Product Lead, Horizon Global"
+        },
+        {
+            quote: "Skill Junction has redefined online learning for me. It's clean, distraction-free, and incredibly effective for complex skill-building.",
+            name: "Liam O'Connor",
+            title: "Data Analyst at MetaScale"
+        }
+    ];
+
+    let currentIdx = 0;
+    const slider = document.getElementById('testimonial-slider');
+
+    function updateTestimonial(idx) {
+        slider.style.opacity = '0';
+        slider.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+            const item = testimonials[idx];
+            slider.innerHTML = `
+                <div class="testimonial-item transition-all duration-700">
+                    <blockquote class="font-headline-lg text-headline-lg md:text-[36px] italic leading-snug font-medium">
+                        "${item.quote}"
+                    </blockquote>
+                    <div class="mt-12 flex flex-col items-center gap-2">
+                        <p class="font-headline-sm text-primary-fixed-dim text-xl font-bold">${item.name}</p>
+                        <p class="text-surface-variant font-label-md opacity-70 tracking-wide uppercase">${item.title}</p>
+                    </div>
+                </div>
+            `;
+            slider.style.opacity = '1';
+            slider.style.transform = 'translateY(0)';
+        }, 400);
+    }
+
+    document.querySelectorAll('section button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (e.currentTarget.innerHTML.includes('chevron_right')) {
+                currentIdx = (currentIdx + 1) % testimonials.length;
+                updateTestimonial(currentIdx);
+            } else if (e.currentTarget.innerHTML.includes('chevron_left')) {
+                currentIdx = (currentIdx - 1 + testimonials.length) % testimonials.length;
+                updateTestimonial(currentIdx);
+            }
+        });
+    });
+
+    // Header scroll effect refinement
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('shadow-xl', 'h-14', 'border-b-primary/10');
+            header.classList.remove('h-16', 'border-b-outline-variant/30');
+        } else {
+            header.classList.remove('shadow-xl', 'h-14', 'border-b-primary/10');
+            header.classList.add('h-16', 'border-b-outline-variant/30');
+        }
+    });
+</script>
+</body></html>
