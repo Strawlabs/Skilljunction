@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -198,9 +199,9 @@ export default function Home() {
               account_circle
             </span>
           </div>
-          <button className="hidden md:block bg-[color:var(--color-primary)] text-[color:var(--color-on-primary)] px-6 py-2 rounded-xl text-[14px] font-bold hover:shadow-lg hover:shadow-[color:var(--color-primary)]/20 transition-all active:scale-95">
+          <Link href="/register?role=learner" className="hidden md:block bg-[color:var(--color-primary)] text-[color:var(--color-on-primary)] px-6 py-2 rounded-xl text-[14px] font-bold hover:shadow-lg hover:shadow-[color:var(--color-primary)]/20 transition-all active:scale-95 text-center">
             Join Class
-          </button>
+          </Link>
         </div>
       </header>
 
@@ -226,12 +227,12 @@ export default function Home() {
                 architecture and world-class tutoring.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <button className="bg-[color:var(--color-primary)] text-[color:var(--color-on-primary)] px-10 py-4 rounded-xl text-[24px] font-semibold hover:shadow-xl hover:shadow-[color:var(--color-primary)]/30 transition-all active:scale-95">
+                <Link href="/register?role=learner" className="bg-[color:var(--color-primary)] text-[color:var(--color-on-primary)] px-10 py-4 rounded-xl text-[24px] font-semibold hover:shadow-xl hover:shadow-[color:var(--color-primary)]/30 transition-all active:scale-95 text-center">
                   Start Learning
-                </button>
-                <button className="border-2 border-[color:var(--color-primary)]/20 text-[color:var(--color-primary)] px-10 py-4 rounded-xl text-[24px] font-semibold hover:bg-[color:var(--color-primary)]/5 hover:border-[color:var(--color-primary)] transition-all active:scale-95">
+                </Link>
+                <Link href="/register?role=tutor" className="border-2 border-[color:var(--color-primary)]/20 text-[color:var(--color-primary)] px-10 py-4 rounded-xl text-[24px] font-semibold hover:bg-[color:var(--color-primary)]/5 hover:border-[color:var(--color-primary)] transition-all active:scale-95 text-center">
                   Join as Tutor
-                </button>
+                </Link>
               </div>
             </div>
             <div className="md:col-span-5 hidden md:block">

@@ -32,10 +32,10 @@ function Navbar() {
 
         {/* Auth buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/auth/login" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
-            Sign In
+          <Link href="/register?role=learner" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
+            Join Class
           </Link>
-          <Link href="/auth/signup" className="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-semibold text-label-md hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+          <Link href="/register?role=learner" className="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-semibold text-label-md hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
             Join Free
           </Link>
         </div>
@@ -51,8 +51,8 @@ function Navbar() {
         <div className="md:hidden glass-nav border-t border-outline-variant/30 px-6 py-4 flex flex-col gap-4">
           <Link href="#courses" className="font-semibold text-on-surface-variant" onClick={() => setMenuOpen(false)}>Courses</Link>
           <Link href="#tutors" className="font-semibold text-on-surface-variant" onClick={() => setMenuOpen(false)}>Tutors</Link>
-          <Link href="/auth/login" className="font-semibold text-on-surface-variant" onClick={() => setMenuOpen(false)}>Sign In</Link>
-          <Link href="/auth/signup" className="bg-primary text-on-primary px-4 py-2 rounded-xl font-semibold text-center" onClick={() => setMenuOpen(false)}>Join Free</Link>
+          <Link href="/register?role=learner" className="font-semibold text-on-surface-variant" onClick={() => setMenuOpen(false)}>Join Class</Link>
+          <Link href="/register?role=learner" className="bg-primary text-on-primary px-4 py-2 rounded-xl font-semibold text-center" onClick={() => setMenuOpen(false)}>Join Free</Link>
         </div>
       )}
     </header>
@@ -186,10 +186,10 @@ export default function HomePage() {
               A curated learning ecosystem designed for modern professionals. Master complex subjects through world-class tutoring.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Link href="/auth/signup" className="bg-primary text-on-primary px-10 py-4 rounded-xl font-semibold text-headline-md hover:shadow-xl hover:shadow-primary/30 transition-all active:scale-95">
+              <Link href="/register?role=learner" className="bg-primary text-on-primary px-10 py-4 rounded-xl font-semibold text-headline-md hover:shadow-xl hover:shadow-primary/30 transition-all active:scale-95">
                 Start Learning
               </Link>
-              <Link href="/auth/signup?role=tutor" className="border-2 border-primary/20 text-primary px-10 py-4 rounded-xl font-semibold text-headline-md hover:bg-primary/5 hover:border-primary transition-all active:scale-95">
+              <Link href="/register?role=tutor" className="border-2 border-primary/20 text-primary px-10 py-4 rounded-xl font-semibold text-headline-md hover:bg-primary/5 hover:border-primary transition-all active:scale-95">
                 Join as Tutor
               </Link>
             </div>
@@ -337,7 +337,7 @@ export default function HomePage() {
           <h2 className="text-headline-lg font-bold mb-4">Ready to Elevate Your Career?</h2>
           <p className="text-on-primary/80 text-body-lg max-w-2xl mx-auto mb-10">Join thousands of professionals already learning on Skill Junction. Start your journey today.</p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/auth/signup" className="bg-on-primary text-primary px-10 py-4 rounded-xl font-bold text-headline-md hover:shadow-xl hover:scale-105 transition-all active:scale-95">
+            <Link href="/register?role=learner" className="bg-on-primary text-primary px-10 py-4 rounded-xl font-bold text-headline-md hover:shadow-xl hover:scale-105 transition-all active:scale-95">
               Enroll Now — It's Free
             </Link>
             <Link href="/courses" className="border-2 border-on-primary/30 text-on-primary px-10 py-4 rounded-xl font-bold text-headline-md hover:bg-on-primary/10 transition-all active:scale-95">

@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -8,16 +9,16 @@ import Link from 'next/link'
 import { INTERESTED_COURSES } from '@/lib/validations/auth'
 import { createClient } from '@/lib/supabase/client'
 
-// Extending the schema based on the new requirements
+// Learner Registration Schema
 const registrationSchema = z.object({
   learnerName: z.string().min(2, 'Learner name must be at least 2 characters').max(100),
   parentName: z.string().min(2, 'Parent name must be at least 2 characters').max(100),
   mobile: z.string().regex(/^[6-9]\d{9}$/, 'Enter a valid 10-digit Indian mobile number'),
   email: z.string().email('Enter a valid email address'),
-  interestedCourse: z.enum(INTERESTED_COURSES, {
+  interestedCourse: z.enum(INTERESTED_COURSES as [string, ...string[]], {
     errorMap: () => ({ message: 'Please select a course' }),
   }),
-  profilePhoto: z.any().optional(), // File upload handling
+  profilePhoto: z.any().optional(),
   aadhaar: z.string().min(1, 'Aadhaar is required for verification (will not be stored)'),
   termsAccepted: z.literal(true, {
     errorMap: () => ({ message: 'You must accept the Terms & Conditions' }),
@@ -26,7 +27,8 @@ const registrationSchema = z.object({
 
 type RegistrationInput = z.infer<typeof registrationSchema>
 
-export default function RegistrationPage() {
+function LearnerOnboarding() {
+
   const supabase = createClient()
   const [serverError, setServerError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -404,5 +406,277 @@ export default function RegistrationPage() {
         </div>
       </main>
     </div>
+  )
+}
+
+function TutorOnboarding() {
+  return (
+    <div className="text-on-surface bg-background font-sans">
+      
+{/* Top Navigation Bar */}
+<header className="sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-12 md:h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+<div className="flex items-center gap-stack-md">
+<span className="font-headline-md text-headline-md font-bold text-primary">Skill Junction</span>
+<div className="hidden md:flex items-center gap-gutter ml-stack-lg">
+<a className="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Resources</a>
+<a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+<div className="flex items-center gap-stack-md">
+<span className="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<div className="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">JD</div>
+</div>
+</header>
+<div className="flex min-h-[calc(100vh-64px)] overflow-hidden">
+{/* Sidebar (Hidden on mobile) */}
+<aside className="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low border-r border-outline-variant p-stack-md overflow-y-auto">
+<div className="mb-stack-lg px-xs">
+<p className="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-stack-sm">Management</p>
+<nav className="space-y-1">
+<a className="flex items-center gap-stack-sm bg-primary-container text-on-primary-container rounded-lg px-stack-md py-stack-sm font-semibold" href="#">
+<span className="material-symbols-outlined">dashboard</span>
+<span className="font-label-md text-label-md">Dashboard</span>
+</a>
+<a className="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span className="material-symbols-outlined">school</span>
+<span className="font-label-md text-label-md">Classes</span>
+</a>
+<a className="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span className="material-symbols-outlined">calendar_today</span>
+<span className="font-label-md text-label-md">Calendar</span>
+</a>
+<a className="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span className="material-symbols-outlined">payments</span>
+<span className="font-label-md text-label-md">Earnings</span>
+</a>
+<a className="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span className="material-symbols-outlined">trending_up</span>
+<span className="font-label-md text-label-md">Progress</span>
+</a>
+<a className="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span className="material-symbols-outlined">settings</span>
+<span className="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</div>
+{/* Tutor Community Widget */}
+<div className="mt-auto glass-card p-stack-md border border-outline-variant">
+<p className="font-label-md text-label-md font-bold mb-stack-sm">Tutor Community</p>
+<p className="font-body-sm text-xs text-on-surface-variant mb-stack-md">Connect with 12k+ expert educators worldwide.</p>
+<button className="w-full py-stack-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Join Discussion</button>
+</div>
+<div className="mt-stack-lg pt-stack-md border-t border-outline-variant space-y-1">
+<a className="flex items-center gap-stack-sm text-on-surface-variant px-stack-md py-stack-sm" href="#">
+<span className="material-symbols-outlined">help</span>
+<span className="font-label-md text-label-md">Help Center</span>
+</a>
+<a className="flex items-center gap-stack-sm text-on-surface-variant px-stack-md py-stack-sm" href="#">
+<span className="material-symbols-outlined text-error">logout</span>
+<span className="font-label-md text-label-md text-error">Logout</span>
+</a>
+</div>
+</aside>
+{/* Main Content Canvas */}
+<main className="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop bg-background min-h-screen">
+{/* Header Section */}
+<section className="mb-stack-lg">
+<h1 className="font-headline-lg text-headline-lg md:font-display-lg md:text-display-lg text-on-background mb-stack-sm">Welcome, Educator</h1>
+<p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Your journey to empowering students starts here. Let's get your profile verified and your classroom ready for your first students.</p>
+</section>
+{/* Grid Layout */}
+<div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+{/* Left Column: Progress & Setup */}
+<div className="lg:col-span-8 space-y-gutter">
+{/* Multi-step Verification Progress */}
+<div className="glass-card p-stack-lg">
+<div className="flex justify-between items-center mb-stack-lg">
+<h2 className="font-headline-md text-headline-md text-on-background">Verification Status</h2>
+<span className="px-stack-md py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">Action Required</span>
+</div>
+<div className="relative flex items-center justify-between mb-8">
+{/* Progress Line */}
+<div className="absolute top-1/2 left-0 w-full h-[2px] bg-surface-variant -translate-y-1/2 z-0"></div>
+<div className="absolute top-1/2 left-0 w-1/3 h-[2px] bg-primary -translate-y-1/2 z-0"></div>
+{/* Steps */}
+<div className="relative z-10 flex flex-col items-center gap-stack-sm bg-background px-4">
+<div className="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg">
+<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+</div>
+<span className="font-label-md text-label-md font-bold text-primary">ID Verified</span>
+</div>
+<div className="relative z-10 flex flex-col items-center gap-stack-sm bg-background px-4">
+<div className="w-10 h-10 rounded-full border-2 border-primary bg-primary-container text-primary flex items-center justify-center">
+<span className="material-symbols-outlined">upload_file</span>
+</div>
+<span className="font-label-md text-label-md font-bold text-on-surface">Certification</span>
+</div>
+<div className="relative z-10 flex flex-col items-center gap-stack-sm bg-background px-4">
+<div className="w-10 h-10 rounded-full border-2 border-outline bg-surface-container text-outline flex items-center justify-center opacity-50">
+<span className="material-symbols-outlined">verified_user</span>
+</div>
+<span className="font-label-md text-label-md font-bold text-outline">Background</span>
+</div>
+</div>
+<div className="bg-surface-container-low rounded-xl p-stack-md border border-outline-variant flex items-center justify-between">
+<div className="flex items-center gap-stack-md">
+<span className="material-symbols-outlined text-primary-container bg-primary p-2 rounded-lg">description</span>
+<div>
+<p className="font-label-md text-label-md font-bold">Pending: Teaching Certificate</p>
+<p className="font-body-sm text-xs text-on-surface-variant">Please upload your most recent certification document.</p>
+</div>
+</div>
+<button className="px-stack-lg py-stack-sm bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary/90 transition-colors">Upload</button>
+</div>
+</div>
+{/* Classroom Setup Guide */}
+<div className="glass-card overflow-hidden">
+<div className="p-stack-lg">
+<h2 className="font-headline-md text-headline-md mb-stack-md">Classroom Setup</h2>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div className="p-stack-md rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span className="material-symbols-outlined text-primary-container bg-primary/10 p-3 rounded-xl mb-stack-md group-hover:scale-110 transition-transform">video_camera_front</span>
+<h3 className="font-label-md text-label-md font-bold mb-xs">Configure Audio &amp; Video</h3>
+<p className="font-body-sm text-sm text-on-surface-variant">Ensure your lighting and camera settings meet professional standards.</p>
+</div>
+<div className="p-stack-md rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span className="material-symbols-outlined text-primary-container bg-primary/10 p-3 rounded-xl mb-stack-md group-hover:scale-110 transition-transform">edit_note</span>
+<h3 className="font-label-md text-label-md font-bold mb-xs">Draft First Curriculum</h3>
+<p className="font-body-sm text-sm text-on-surface-variant">Use our AI-assisted tool to build your course syllabus in minutes.</p>
+</div>
+<div className="p-stack-md rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span className="material-symbols-outlined text-primary-container bg-primary/10 p-3 rounded-xl mb-stack-md group-hover:scale-110 transition-transform">schedule</span>
+<h3 className="font-label-md text-label-md font-bold mb-xs">Set Teaching Hours</h3>
+<p className="font-body-sm text-sm text-on-surface-variant">Define your weekly availability for automated booking.</p>
+</div>
+<div className="p-stack-md rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span className="material-symbols-outlined text-primary-container bg-primary/10 p-3 rounded-xl mb-stack-md group-hover:scale-110 transition-transform">payments</span>
+<h3 className="font-label-md text-label-md font-bold mb-xs">Payout Details</h3>
+<p className="font-body-sm text-sm text-on-surface-variant">Connect your bank account to receive weekly tuition payouts.</p>
+</div>
+</div>
+</div>
+<div className="bg-primary/5 py-stack-md px-stack-lg flex justify-between items-center">
+<span className="font-body-sm text-sm font-medium text-primary">Need a personalized walkthrough?</span>
+<button className="text-primary font-bold hover:underline">Start Tutorial</button>
+</div>
+</div>
+</div>
+{/* Right Column: Schedule & Community */}
+<div className="lg:col-span-4 space-y-gutter">
+{/* Teaching Schedule Preview */}
+<div className="glass-card p-stack-lg">
+<div className="flex justify-between items-center mb-stack-lg">
+<h2 className="font-label-md text-label-md font-bold text-on-background">Teaching Schedule</h2>
+<span className="material-symbols-outlined text-on-surface-variant cursor-pointer">open_in_new</span>
+</div>
+<div className="space-y-stack-md">
+{/* Date Item */}
+<div className="flex gap-stack-md pb-stack-md border-b border-outline-variant last:border-0 last:pb-0">
+<div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container">
+<span className="text-[10px] font-bold uppercase">Oct</span>
+<span className="text-lg font-bold leading-none">14</span>
+</div>
+<div>
+<p className="font-label-md text-label-md font-bold">Orientation Session</p>
+<p className="font-body-sm text-xs text-on-surface-variant">09:00 AM — 10:30 AM</p>
+</div>
+</div>
+<div className="flex gap-stack-md pb-stack-md border-b border-outline-variant last:border-0 last:pb-0">
+<div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-surface-container text-on-surface-variant">
+<span className="text-[10px] font-bold uppercase">Oct</span>
+<span className="text-lg font-bold leading-none">15</span>
+</div>
+<div>
+<p className="font-label-md text-label-md font-bold">First Trial Lesson</p>
+<p className="font-body-sm text-xs text-on-surface-variant">02:00 PM — 03:00 PM</p>
+</div>
+</div>
+<div className="flex gap-stack-md pb-stack-md border-b border-outline-variant last:border-0 last:pb-0">
+<div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-surface-container text-on-surface-variant">
+<span className="text-[10px] font-bold uppercase">Oct</span>
+<span className="text-lg font-bold leading-none">17</span>
+</div>
+<div>
+<p className="font-label-md text-label-md font-bold">Group Workshop</p>
+<p className="font-body-sm text-xs text-on-surface-variant">11:00 AM — 12:30 PM</p>
+</div>
+</div>
+</div>
+<button className="w-full mt-stack-lg py-stack-sm bg-surface-container-high text-on-surface-variant rounded-lg font-label-md hover:bg-surface-dim transition-all">View Full Calendar</button>
+</div>
+{/* Community Highlight Image */}
+<div className="relative overflow-hidden rounded-2xl h-64 group cursor-pointer">
+<div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A diverse group of professional educators collaborating in a modern, sunlit shared workspace. They are using high-end laptops and digital tablets, surrounded by minimalist wooden furniture and vibrant green indoor plants. The lighting is bright and natural, creating a warm, encouraging atmosphere. The aesthetic is clean and professional with a soft depth of field focusing on their engaged expressions." style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRNalgf99scjLCYMU8o1PJtruR0ymasZ8rwQsjQaADRjzdIT8j5oB-HrPzgx0-SpEAugIaiSZUo2jHn5traW38dGEM2rLfq3VKoAqY7QHporGe4pP8C8lxG5QpD9kR9zuWUV3SjN_U0zn04f7BmSDkqZkZkTddX2FERX64UK7iUNqtSQlks0UusAnCw44Da25FXF1UXNxC-BJK-wVKmZA0DnQLpLDg-KfgfUX75gbfoMPRP-9_cPnLcAzQ5yvdcdPhRL3s--Pu9t-8')" }}>
+</div>
+<div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div className="absolute bottom-0 left-0 p-stack-lg text-on-primary">
+<p className="font-label-md text-label-md font-bold mb-xs">Featured Resource</p>
+<h3 className="font-headline-sm text-headline-sm mb-stack-md">Top 10 Virtual Classroom Engagement Tips</h3>
+<button className="px-stack-md py-stack-sm bg-white/20 backdrop-blur-md border border-white/30 rounded-lg text-xs font-bold hover:bg-white/40 transition-all">Read Guide</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+{/* Mobile Navigation (Visible only on small screens) */}
+<nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant flex justify-around items-center h-16 z-50">
+<button className="flex flex-col items-center gap-1 text-primary">
+<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>dashboard</span>
+<span className="text-[10px] font-bold">Home</span>
+</button>
+<button className="flex flex-col items-center gap-1 text-on-surface-variant">
+<span className="material-symbols-outlined">school</span>
+<span className="text-[10px] font-bold">Classes</span>
+</button>
+<button className="flex flex-col items-center gap-1 text-on-surface-variant">
+<span className="material-symbols-outlined">calendar_today</span>
+<span className="text-[10px] font-bold">Calendar</span>
+</button>
+<button className="flex flex-col items-center gap-1 text-on-surface-variant">
+<span className="material-symbols-outlined">group</span>
+<span className="text-[10px] font-bold">Community</span>
+</button>
+</nav>
+{/* Footer (Standard for Desktop) */}
+<footer className="hidden md:flex w-full py-xl px-margin-desktop bg-on-surface text-surface-bright flex-row justify-between items-center gap-md">
+<div className="flex flex-col gap-xs">
+<span className="font-headline-sm text-headline-sm font-bold text-surface-bright">Skill Junction</span>
+<p className="font-body-sm text-body-sm opacity-80">© 2024 Skill Junction. Academic Modernism in Learning.</p>
+</div>
+<div className="flex gap-gutter">
+<a className="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Courses</a>
+<a className="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Tutors</a>
+<a className="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a className="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Contact</a>
+</div>
+</footer>
+
+
+    </div>
+  )
+}
+
+function RegisterContent() {
+  const searchParams = useSearchParams()
+  const role = searchParams.get('role')
+
+  if (role === 'tutor') {
+    return <TutorOnboarding />
+  }
+
+  return <LearnerOnboarding />
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    }>
+      <RegisterContent />
+    </Suspense>
   )
 }
