@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill Junction | IELTS Masterclass</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .soft-bloom {
+            box-shadow: 0 4px 20px -2px rgba(32, 54, 189, 0.04), 0 2px 10px -2px rgba(32, 54, 189, 0.02);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f7f9fb 0%, #dfe0ff 100%);
+        }
+        .primary-button-gradient {
+            background: linear-gradient(to bottom, #3e52d5, #2036bd);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eceef0",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-surface-variant": "#454654",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#001e2f",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#006794",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-tint": "#3b4fd2",
+                        "on-tertiary-container": "#bbe1ff",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "inverse-primary": "#bbc3ff",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "secondary-container": "#d0e1fb",
+                        "tertiary-fixed": "#c9e6ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "outline": "#757686",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "surface": "#f7f9fb",
+                        "secondary": "#505f76",
+                        "primary-fixed": "#dfe0ff",
+                        "primary": "#2036bd",
+                        "inverse-surface": "#2d3133",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "outline-variant": "#c5c5d7",
+                        "tertiary": "#004e71",
+                        "primary-container": "#3e52d5",
+                        "on-secondary-container": "#54647a",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#000d60",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary-container": "#d7daff",
+                        "inverse-on-surface": "#eff1f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "section-gap": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md shadow-sm h-16 flex justify-between items-center px-gutter">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-primary-fixed">Skill Junction</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-primary-fixed font-bold border-b-2 border-primary-fixed font-body-md text-body-md py-1" href="#">Classes</a>
+<a class="text-on-surface-variant hover:text-primary-fixed transition-colors font-body-md text-body-md py-1" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary-fixed transition-colors font-body-md text-body-md py-1" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="hidden sm:flex items-center bg-surface-container-high/50 rounded-full px-4 py-2 gap-2">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-48 p-0" placeholder="Find mastery..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant cursor-pointer active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant cursor-pointer active:scale-95 transition-transform" data-icon="apps">apps</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden border border-outline-variant">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdGKGxd47MD2dM0B0n0XRFFqWY2g8r6DtWZv9VJVHDP79aeRmyoluWw4oLTpuOdn1PgG5YoS4i6lLs2PV8d6CkGT9HfWFmO8tiizca27aiKSzbrScjzhULB9QIO11uuDU5yGa_ZI6O1F297rzZWTlk1tjOoySZG8jFb-j98CT0WPEF-pNMFo51yVdvOq06-LXiSXULLhPPf-SgMD4wvEcDajY8Tm9Sn20mYVVCHOe6qxcjuUVVoPEB9PBWD9gVhdyxcQN6q2I1ABo"/>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-section-gap">
+<!-- Hero Section -->
+<section class="hero-gradient relative overflow-hidden">
+
+<div class="max-w-container-max mx-auto px-margin-desktop py-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-7 space-y-stack-lg">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container rounded-full text-on-primary-container">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Professional Certification</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface leading-tight">IELTS Masterclass</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        A comprehensive, tech-driven approach to mastering the International English Language Testing System. Achieve Band 8.5+ with precision-guided strategies.
+                    </p>
+<div class="flex flex-wrap gap-stack-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg">4.8 (240 reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="group">group</span>
+<span class="font-label-lg text-label-lg">1.2k+ Enrolled</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<span class="font-label-lg text-label-lg">48 Hours Content</span>
+</div>
+</div>
+<div class="flex items-center gap-stack-md pt-4">
+<button class="primary-button-gradient px-8 py-4 rounded-[12px] text-on-primary font-label-lg text-label-lg shadow-lg hover:shadow-primary/20 transition-all active:scale-95">Enroll Now - $299</button>
+<button class="px-8 py-4 rounded-[12px] border border-outline-variant font-label-lg text-label-lg text-primary hover:bg-white/50 transition-all">Download Syllabus</button>
+</div>
+</div>
+<div class="md:col-span-5 flex justify-center">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl group cursor-pointer">
+<img alt="Premium Online Learning" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A clean, professional studio shot of a modern laptop on a white desk with soft, layered shadows. The screen displays a sophisticated educational dashboard with data visualizations and clean typography in deep indigo and white. Warm, diffused morning light enters from a large window, creating a serene and premium corporate learning atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoWo3vLjazaSZeBug2tQm33-EoO0SR4qPElVlkOHeTYVlb6u0JOy6FRkWRSxfsJqdKuR1EsBqTeuwFkYPrwoOMhDeN9EyJYmg2NS2mkpTrjDJAfw-vUYeRNFygeeJRatKpld9yZB_ZzKuoa6ZonATuk5PKjNll8A3rvQFOVTzpn6HDMKjAqpMgIJgwRr6wAXETGyIGDc969zdGbZWdOYyiaMm9dgcHAUnfQN8wU07Dpf9C8_UX_U7XGwBYvsXcO1gqeNzm9KTXStw"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px]" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Area -->
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-10 mt-16">
+<!-- Left Column: Course Details -->
+<div class="md:col-span-8 space-y-section-gap">
+<!-- What you will learn -->
+<section>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg">What you will learn</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-stack-md">
+<div class="flex gap-4 p-6 rounded-xl bg-surface-container-low soft-bloom">
+<span class="material-symbols-outlined text-primary pt-1" data-icon="check_circle">check_circle</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Advanced essay structures for Writing Task 1 and 2 to ensure maximum lexical resource scores.</p>
+</div>
+<div class="flex gap-4 p-6 rounded-xl bg-surface-container-low soft-bloom">
+<span class="material-symbols-outlined text-primary pt-1" data-icon="check_circle">check_circle</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Native-level pronunciation techniques and fluency drills for the Speaking component.</p>
+</div>
+<div class="flex gap-4 p-6 rounded-xl bg-surface-container-low soft-bloom">
+<span class="material-symbols-outlined text-primary pt-1" data-icon="check_circle">check_circle</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Speed reading and scanning hacks for complex academic texts in the Reading section.</p>
+</div>
+<div class="flex gap-4 p-6 rounded-xl bg-surface-container-low soft-bloom">
+<span class="material-symbols-outlined text-primary pt-1" data-icon="check_circle">check_circle</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Critical listening strategies to identify distractors and handle multiple speaker formats.</p>
+</div>
+</div>
+</section>
+<!-- Curriculum (Mobile/Desktop Hybrid) -->
+<section>
+<div class="flex justify-between items-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Curriculum breakdown</h2>
+<span class="font-label-md text-label-md text-on-surface-variant">4 Modules • 24 Lessons</span>
+</div>
+<div class="space-y-stack-md">
+<!-- Speaking -->
+<div class="rounded-xl border border-outline-variant overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 bg-white hover:bg-surface-container-low transition-colors text-left">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary-container bg-tertiary-fixed p-3 rounded-lg" data-icon="record_voice_over">record_voice_over</span>
+<div>
+<h3 class="font-headline-md text-headline-md">Speaking Mastery</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">6 Lessons • 12 Hours</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<!-- Writing -->
+<div class="rounded-xl border border-outline-variant overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 bg-white hover:bg-surface-container-low transition-colors text-left">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container bg-primary-fixed p-3 rounded-lg" data-icon="edit_note">edit_note</span>
+<div>
+<h3 class="font-headline-md text-headline-md">Writing Excellence</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">8 Lessons • 16 Hours</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<!-- Reading -->
+<div class="rounded-xl border border-outline-variant overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 bg-white hover:bg-surface-container-low transition-colors text-left">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-secondary-container bg-secondary-fixed p-3 rounded-lg" data-icon="menu_book">menu_book</span>
+<div>
+<h3 class="font-headline-md text-headline-md">Reading Precision</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">5 Lessons • 10 Hours</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<!-- Listening -->
+<div class="rounded-xl border border-outline-variant overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 bg-white hover:bg-surface-container-low transition-colors text-left">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-error-container bg-error-container p-3 rounded-lg" data-icon="hearing">hearing</span>
+<div>
+<h3 class="font-headline-md text-headline-md">Listening Focus</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">5 Lessons • 10 Hours</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sticky Sidebar -->
+<aside class="md:col-span-4 space-y-stack-lg">
+<!-- Tutor Card -->
+<div class="glass-panel p-8 rounded-xl soft-bloom border border-white sticky top-24">
+<h3 class="font-label-sm text-label-sm uppercase text-primary mb-stack-md tracking-widest">Lead Instructor</h3>
+<div class="flex items-center gap-4 mb-stack-md">
+<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Dr. Sarah Jenkins" class="w-full h-full object-cover" data-alt="A professional portrait of a female instructor in her late 30s with an intelligent and welcoming expression. She is wearing a modern navy blazer and is set against a blurred, high-end office background with soft bokeh lighting. The overall image has a clean, high-resolution aesthetic, emphasizing a trustworthy and expert academic personality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkK-G9IWNmsZoIuX0TNumwx5w_0z3hTYyL_DIDK3ci30xI41RPpahb-FOKjeNsY3mR8l20b21nQ16wfbZUGoxSaFmKfJlOQwR_IA842YuRkj-wTISz6bh99sJfWQaSYg_TGtBOWnHeDhuI9tAH4b8BLYmAsqlTaJZwCwwvefRpH2GsDh6toDnRuG2m2XTl8dXHIhv8UnHwoWX6JoqKDHj1iDfGttCget0yHdsyv4p_JpqpgTVRjvkmnbA6A5nxscbLpneTIrDz3DE"/>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">Dr. Sarah Jenkins</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">Ex-IELTS Examiner (15+ Years)</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg leading-relaxed">
+                        Dr. Jenkins has helped over 10,000 students worldwide achieve their dream scores. She specializes in identifying the subtle linguistic patterns that examiners look for in Band 8+ candidates.
+                    </p>
+<div class="flex gap-4">
+<button class="flex-1 bg-surface-container-high py-3 rounded-lg text-primary font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="mail">mail</span> Message
+                        </button>
+<button class="flex-1 bg-surface-container-high py-3 rounded-lg text-primary font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span> Profile
+                        </button>
+</div>
+</div>
+<!-- Inclusion Card -->
+<div class="bg-primary text-on-primary p-8 rounded-xl shadow-xl">
+<h3 class="font-headline-md text-headline-md mb-stack-md">This course includes:</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="terminal">terminal</span>
+<span class="font-body-md text-body-md">Personalized AI Feedback</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="font-body-md text-body-md">15 Full-length Mock Exams</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="group_work">group_work</span>
+<span class="font-body-md text-body-md">Live Q&amp;A Sessions Weekly</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-body-md text-body-md">Accredited Certificate</span>
+</li>
+</ul>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-stack-md">
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="font-headline-md text-headline-md text-primary-fixed">Skill Junction</span>
+<p class="font-label-md text-label-md text-on-surface-variant">© 2024 Skill Junction. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-stack-lg">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Academic Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Privacy Center</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Help Desk</a>
+</div>
+</div>
+</footer>
+<!-- Enrollment Notification Simulation -->
+<div class="fixed bottom-gutter right-gutter bg-surface-container p-4 rounded-xl soft-bloom border border-primary-fixed/30 flex items-center gap-4 transition-all duration-500 translate-y-24 opacity-0 z-50" id="toast">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">New Student Enrolled</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Just now from London, UK</p>
+</div>
+</div>
+<script>
+        // Simple micro-interaction for a toast notification
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('translate-y-24', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+                
+                setTimeout(() => {
+                    toast.classList.add('translate-y-24', 'opacity-0');
+                }, 5000);
+            }, 3000);
+        });
+
+        // Toggle logic for curriculum modules (simplified)
+        document.querySelectorAll('button.w-full').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const icon = btn.querySelector('[data-icon="expand_more"]');
+                if(icon) {
+                    icon.style.transform = icon.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+                    icon.style.transition = 'transform 0.3s ease';
+                }
+            });
+        });
+    </script>
+</body></html>
