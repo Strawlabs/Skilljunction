@@ -15,28 +15,30 @@ function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'glass-nav shadow-md' : 'bg-transparent'}`}>
+    <header className={`fixed top-0 z-50 w-full transition-all duration-300 border-b border-outline-variant/30 ${scrolled ? 'glass-nav shadow-md' : 'glass-nav'}`}>
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="font-extrabold text-xl text-primary tracking-tight flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary text-[28px]">school</span>
-          Skill Junction
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-8 items-center">
-          <Link href="#courses" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors">Courses</Link>
-          <Link href="#tutors" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors">Tutors</Link>
-          <Link href="/calendar" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors">Calendar</Link>
-        </nav>
-
-        {/* Auth buttons */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link href="/register?role=learner" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
-            Join Class
+        {/* Left side: Logo + Nav links */}
+        <div className="flex items-center gap-10">
+          <Link href="/" className="font-extrabold text-headline-md text-primary tracking-tight">
+            Skill Junction
           </Link>
-          <Link href="/register?role=learner" className="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-semibold text-label-md hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
-            Join Free
+          <nav className="hidden md:flex gap-8 items-center">
+            <Link href="#courses" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors">Courses</Link>
+            <Link href="#tutors" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors">Tutors</Link>
+            <Link href="#blog" className="text-label-md font-semibold text-on-surface-variant hover:text-primary transition-colors">Insights</Link>
+          </nav>
+        </div>
+
+        {/* Right side: Icons + Join Class button */}
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex items-center gap-4">
+            <span className="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">notifications</span>
+            <Link href="/auth/login">
+              <span className="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">account_circle</span>
+            </Link>
+          </div>
+          <Link href="/register?role=learner">
+            <button className="bg-primary text-on-primary px-6 py-2 rounded-xl text-label-md hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 font-bold">Join Class</button>
           </Link>
         </div>
 
@@ -51,8 +53,8 @@ function Navbar() {
         <div className="md:hidden glass-nav border-t border-outline-variant/30 px-6 py-4 flex flex-col gap-4">
           <Link href="#courses" className="font-semibold text-on-surface-variant" onClick={() => setMenuOpen(false)}>Courses</Link>
           <Link href="#tutors" className="font-semibold text-on-surface-variant" onClick={() => setMenuOpen(false)}>Tutors</Link>
-          <Link href="/register?role=learner" className="font-semibold text-on-surface-variant" onClick={() => setMenuOpen(false)}>Join Class</Link>
-          <Link href="/register?role=learner" className="bg-primary text-on-primary px-4 py-2 rounded-xl font-semibold text-center" onClick={() => setMenuOpen(false)}>Join Free</Link>
+          <Link href="#blog" className="font-semibold text-on-surface-variant" onClick={() => setMenuOpen(false)}>Insights</Link>
+          <Link href="/register?role=learner" className="bg-primary text-on-primary px-4 py-2 rounded-xl font-semibold text-center" onClick={() => setMenuOpen(false)}>Join Class</Link>
         </div>
       )}
     </header>
