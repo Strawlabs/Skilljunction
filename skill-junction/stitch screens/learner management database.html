@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill Junction | Administrator Learner Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d8dadc",
+                        "secondary": "#505f76",
+                        "primary": "#2036bd",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "tertiary": "#004e71",
+                        "surface-container": "#eceef0",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#d3e4fe",
+                        "background": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#c9e6ff",
+                        "primary-fixed": "#dfe0ff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#3b4fd2",
+                        "on-tertiary-container": "#bbe1ff",
+                        "on-surface-variant": "#454654",
+                        "on-primary-fixed": "#000d60",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#3e52d5",
+                        "secondary-container": "#d0e1fb",
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#c5c5d7",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "outline": "#757686",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#bbc3ff",
+                        "tertiary-container": "#006794",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-container": "#54647a",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary-container": "#d7daff",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed": "#001e2f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "section-gap": "64px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(16px); background: rgba(255, 255, 255, 0.7); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .soft-shadow { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 10px -2px rgba(0, 0, 0, 0.02); }
+        .status-pill-paid { background-color: #dcfce7; color: #166534; }
+        .status-pill-overdue { background-color: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface/70 backdrop-blur-xl flex flex-col p-4 shadow-2xl shadow-on-background/5 z-50">
+<div class="mb-stack-lg px-4">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Skill Junction</h1>
+<p class="font-label-sm text-label-sm text-secondary">Mastery Platform</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors group" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Courses</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-xl px-4 py-3 font-bold active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-body-md text-body-md">Learning</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors group" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md text-body-md">Finance</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-2">
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded-xl hover:opacity-90 transition-opacity mb-4">
+                Upgrade Plan
+            </button>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-2 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-2 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface/70 backdrop-blur-xl flex justify-between items-center px-8 z-40 shadow-sm shadow-on-background/2">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-label-md focus:ring-2 focus:ring-primary transition-all" placeholder="Search learners, cohorts, or transactions..." type="text"/>
+</div>
+<nav class="hidden lg:flex items-center gap-6 ml-4">
+<a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors" href="#">Tutors</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Learners</a>
+<a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors" href="#">Parents</a>
+<a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors" href="#">Admin</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface font-bold">Alex Rivera</p>
+<p class="text-[10px] text-secondary uppercase tracking-wider">Super Admin</p>
+</div>
+<img alt="Administrator Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20 group-hover:border-primary transition-colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD32iJBvDfsm8FnV75P3UBTRPCM6-FGKTMYgzdYL249LNZUYeqyd_IOM8EtHTNwaVdUw6j55KeTzVUoXB5HomM2_tbpN-nPvXhgEFUllkpkzxRa-8iy_SO_Jfz_fF6xQUygtFNiiDKEkvnpW-4fOt-2gmpsu6MXuVg9mphcI-YA2H0iKCzZoayj_pRUAIck68T_LZGGDjS_sD0B6rY-GDCReyQaz244eEuXiO4eSrWseh9NllkcEll5z5PtsRwdtDB7iDCgXtAFQS4"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-margin-desktop min-h-screen">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Learner Management</h2>
+<p class="font-body-md text-body-md text-secondary">Manage 1,284 active learners across all certification tracks.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-highest text-on-surface font-label-md rounded-xl hover:bg-surface-dim transition-colors">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+                    Export Academic Record
+                </button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary font-label-md rounded-xl hover:opacity-90 shadow-md shadow-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    New Session
+                </button>
+</div>
+</div>
+<!-- Filters & Stats Bento -->
+<div class="grid grid-cols-12 gap-gutter mb-stack-lg">
+<!-- Stats Bar -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-6 rounded-2xl soft-shadow flex justify-between items-center">
+<div class="flex gap-12">
+<div>
+<p class="text-label-sm font-label-sm text-secondary mb-1">Total Learners</p>
+<p class="text-headline-md font-headline-md font-bold text-on-surface">1,284</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary mb-1">Avg. Attendance</p>
+<p class="text-headline-md font-headline-md font-bold text-on-surface">92.4%</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary mb-1">Avg. Quiz Score</p>
+<p class="text-headline-md font-headline-md font-bold text-on-surface">84/100</p>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="flex -space-x-3">
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrMvx47pPk4Z2LdkTF2HUhqZN2-TaViz9y85jpQB1CZsdTz6u2la0ZU_xjyCLDT2e-BybabGdOpS0QbP4jwQbHzeKL3TywNjaoKPxQNkoD4cIvKrynoePI26BkHeVBjDmfxADig6_Vy_QiIfEJAHFl5yVF0PBFSm4u1LRU-3f05lwQB-s1MGp8VNRh8xGussxwjyFyI_TSBHv75oqvn7EdDBSfGdJylVt_ldZ5hc1bg0NfxYmjqJ1bMRL2ZE9-ztIndPIuYZRCDnw"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDITYrL4iinRCh3B6PbAEbMjJ556_deRnjVJNkQHAdH73LFKCImDoVpUv6Why39e6D7SoJOK11ZDt7C80he5xalOLN-NS_MOgXbMEATGfzIp2ZOc8R1UlG3CNzS0dbQxX-hWqQYFd15j5WXdTHBFoyhstLrOyneViPgZSpF0yIGeA67gpZE3tSeJG_UHXEpmdS6BmO_E85R3vc4irvz28dKPXtK3jrCWhegucw8Y_JQqJxPuf_dT42cz4NdZLI6OvpqGuABVoV-9xM"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkmN9IaZl3G84W8o6T0eL3iWw7XuSesgtNUtmKUV4Tm0lhAedB9cOYbUBbBA2bWLI8VSk-70Cy7XqgXsnGnOvf-rzV4FWp_hOzUrMmE7ukMePGxD_5R8tchJ4HBJecA9FQnAmyvnF2fuUyl2Ao_VABFFM0nGwOAuVYSTEDFX7VZ3C7o82OzBvvAjDw-wR2ZCMqfGrmnfet2LhTfUzFeWqSkTHzbPiKdtm7FQfvHrUTJBMRuLIqHPhUcKcKxfRZij0_Q3DI_mE1zI8"/>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container text-[10px] flex items-center justify-center font-bold border-2 border-surface">+24</div>
+</div>
+</div>
+</div>
+<!-- Quick Filter -->
+<div class="col-span-12 lg:col-span-4 bg-primary-container p-6 rounded-2xl soft-shadow text-on-primary-container relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-label-sm font-label-sm opacity-80 mb-2">Cohort Priority</p>
+<h3 class="text-headline-md font-headline-md font-bold mb-4">IELTS Summer 2024</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-on-primary-container/20 rounded-full text-[12px] font-bold">42 Students</span>
+<span class="px-3 py-1 bg-on-primary-container/20 rounded-full text-[12px] font-bold">12 Pending Fees</span>
+</div>
+</div>
+
+</div>
+</div>
+<!-- High Density Table Container -->
+<div class="bg-surface-container-lowest rounded-2xl soft-shadow overflow-hidden">
+<!-- Table Controls -->
+<div class="p-6 border-b border-outline-variant flex flex-wrap gap-4 items-center justify-between">
+<div class="flex gap-4">
+<select class="bg-surface-container-low border-none rounded-xl px-4 py-2.5 text-label-md focus:ring-2 focus:ring-primary">
+<option>Cohort: All</option>
+<option>IELTS Summer '24</option>
+<option>Spoken English Master</option>
+<option>Business Writing</option>
+</select>
+<select class="bg-surface-container-low border-none rounded-xl px-4 py-2.5 text-label-md focus:ring-2 focus:ring-primary">
+<option>Payment: All</option>
+<option>Paid</option>
+<option>Overdue</option>
+</select>
+<div class="relative">
+<input class="bg-surface-container-low border-none rounded-xl px-4 py-2.5 text-label-md focus:ring-2 focus:ring-primary" type="date"/>
+</div>
+</div>
+<div class="flex items-center gap-2 text-secondary text-label-md">
+<span>Showing 1-10 of 1,284 results</span>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Learner Profile</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Enrollment</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Attendance</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Quiz Score</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider">Payment Status</th>
+<th class="px-6 py-4 font-label-md text-label-md text-secondary uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed-dim text-on-primary-fixed-variant flex items-center justify-center font-bold">JD</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Jordan Davies</p>
+<p class="text-label-sm font-label-sm text-secondary">Reg: 12 May 2024</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col gap-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[10px] font-bold w-fit">IELTS PREP</span>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed rounded text-[10px] font-bold w-fit">SPOKEN ENGLISH</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+<span class="text-label-sm font-label-sm mt-1 inline-block">94%</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-label-md text-label-md text-on-surface font-bold">88/100</span>
+</td>
+<td class="px-6 py-5">
+<span class="status-pill-paid px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tight">Paid</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Message Parent">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Menu">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed-dim text-on-tertiary-fixed-variant flex items-center justify-center font-bold">MW</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Maya Williams</p>
+<p class="text-label-sm font-label-sm text-secondary">Reg: 28 Apr 2024</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col gap-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[10px] font-bold w-fit">IELTS PREP</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-error h-full w-[72%]"></div>
+</div>
+<span class="text-label-sm font-label-sm mt-1 inline-block">72%</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-label-md text-label-md text-on-surface font-bold">64/100</span>
+</td>
+<td class="px-6 py-5">
+<span class="status-pill-overdue px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tight">Overdue</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Message Parent">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Menu">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed-dim text-on-secondary-fixed-variant flex items-center justify-center font-bold">AK</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Arjun Kapoor</p>
+<p class="text-label-sm font-label-sm text-secondary">Reg: 05 Jun 2024</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col gap-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[10px] font-bold w-fit">SPOKEN ENGLISH</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[98%]"></div>
+</div>
+<span class="text-label-sm font-label-sm mt-1 inline-block">98%</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-label-md text-label-md text-on-surface font-bold">95/100</span>
+</td>
+<td class="px-6 py-5">
+<span class="status-pill-paid px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tight">Paid</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Message Parent">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Menu">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">EL</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Elena Lopez</p>
+<p class="text-label-sm font-label-sm text-secondary">Reg: 12 May 2024</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col gap-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[10px] font-bold w-fit">IELTS PREP</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold w-fit">BUSINESS WRITING</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<span class="text-label-sm font-label-sm mt-1 inline-block">85%</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-label-md text-label-md text-on-surface font-bold">79/100</span>
+</td>
+<td class="px-6 py-5">
+<span class="status-pill-paid px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tight">Paid</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Message Parent">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Menu">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">SC</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Sarah Chen</p>
+<p class="text-label-sm font-label-sm text-secondary">Reg: 03 Jun 2024</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col gap-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[10px] font-bold w-fit">IELTS PREP</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="w-32 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[91%]"></div>
+</div>
+<span class="text-label-sm font-label-sm mt-1 inline-block">91%</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-label-md text-label-md text-on-surface font-bold">92/100</span>
+</td>
+<td class="px-6 py-5">
+<span class="status-pill-paid px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tight">Paid</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Message Parent">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-lg transition-colors" title="Menu">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex justify-between items-center bg-surface-container-low/30">
+<button class="px-4 py-2 border border-outline-variant rounded-xl text-label-md text-secondary hover:bg-surface-container-low transition-colors disabled:opacity-50">Previous</button>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-xl bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 rounded-xl hover:bg-surface-container-high text-secondary">2</button>
+<button class="w-10 h-10 rounded-xl hover:bg-surface-container-high text-secondary">3</button>
+<span class="w-10 h-10 flex items-center justify-center">...</span>
+<button class="w-10 h-10 rounded-xl hover:bg-surface-container-high text-secondary">128</button>
+</div>
+<button class="px-4 py-2 border border-outline-variant rounded-xl text-label-md text-secondary hover:bg-surface-container-low transition-colors">Next</button>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 mt-section-gap flex flex-col md:flex-row justify-between items-center border-t border-outline-variant max-w-container-max mx-auto px-4">
+<div class="mb-4 md:mb-0">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Skill Junction</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">© 2024 Skill Junction. All rights reserved.</p>
+</div>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</main>
+<script>
+        // Simple interactivity for the table actions
+        document.querySelectorAll('button[title="View Profile"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                alert('Opening detailed learner profile view...');
+            });
+        });
+
+        document.querySelectorAll('button[title="Message Parent"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                alert('Initiating communication module...');
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

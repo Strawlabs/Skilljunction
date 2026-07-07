@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill Junction | Welcome to your Learning Journey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#191c1e",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-highest": "#e0e3e5",
+                    "tertiary-fixed-dim": "#89ceff",
+                    "on-primary-fixed-variant": "#1d34ba",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#001e2f",
+                    "on-secondary-fixed": "#0b1c30",
+                    "primary-fixed": "#dfe0ff",
+                    "surface-tint": "#3b4fd2",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#d7daff",
+                    "inverse-surface": "#2d3133",
+                    "primary-container": "#3e52d5",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "tertiary-fixed": "#c9e6ff",
+                    "secondary-fixed": "#d3e4fe",
+                    "background": "#f7f9fb",
+                    "secondary-container": "#d0e1fb",
+                    "surface-dim": "#d8dadc",
+                    "inverse-primary": "#bbc3ff",
+                    "on-tertiary-fixed-variant": "#004c6e",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-container": "#bbe1ff",
+                    "on-primary-fixed": "#000d60",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#757686",
+                    "on-surface-variant": "#454654",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-container": "#006794",
+                    "error": "#ba1a1a",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#bbc3ff",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#004e71",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#505f76",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#c5c5d7",
+                    "primary": "#2036bd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "section-gap": "64px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        .soft-bloom {
+            box-shadow: 0 0 40px 0 rgba(32, 54, 189, 0.04);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c5c5d7; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar (JSON Reference) -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-12 md:h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Skill Junction</h1>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+</div>
+</header>
+<main class="flex min-h-[calc(100vh-64px)]">
+<!-- SideNavBar (JSON Reference) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low border-r border-outline-variant py-stack-md px-stack-sm overflow-y-auto">
+<div class="flex flex-col gap-1 mb-stack-lg">
+<div class="flex items-center gap-xs bg-primary-container text-on-primary-container rounded-lg px-sm py-xs font-semibold">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-sm py-xs rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-md text-label-md">Classes</span>
+</a>
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-sm py-xs rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-sm py-xs rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Payments</span>
+</a>
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-sm py-xs rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-md text-label-md">Progress</span>
+</a>
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-sm py-xs rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-1 border-t border-outline-variant pt-stack-md">
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-sm py-xs rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-high px-sm py-xs rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Content Area -->
+<div class="flex-1 md:ml-64 px-margin-mobile md:px-margin-desktop py-stack-lg">
+<!-- Hero Header Section -->
+<section class="mb-section-gap">
+<div class="relative overflow-hidden rounded-3xl p-stack-lg md:p-12 flex flex-col md:flex-row items-center justify-between gap-stack-lg bg-surface-container">
+<div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary-fixed/30 blur-3xl"></div>
+<div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-secondary-fixed/30 blur-3xl"></div>
+<div class="relative z-10 max-w-xl">
+<h2 class="font-display-lg text-display-lg md:text-display-lg text-on-background mb-stack-sm">Welcome to your Learning Journey</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">We're excited to have you here! Let's get your profile set up so you can start mastering new skills today.</p>
+<div class="mt-stack-lg flex flex-wrap gap-stack-md">
+<div class="flex items-center gap-stack-sm bg-surface-container-highest px-stack-md py-stack-sm rounded-full">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-md text-label-md">Level 1 Novice</span>
+</div>
+<div class="flex items-center gap-stack-sm bg-surface-container-highest px-stack-md py-stack-sm rounded-full">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-md text-label-md">0 Day Streak</span>
+</div>
+</div>
+</div>
+<!-- Quick Start Widget -->
+<div class="relative z-10 glass-card p-stack-lg rounded-2xl w-full md:w-80 border border-white/40">
+<h3 class="font-headline-md text-headline-md text-on-background mb-stack-md">Quick Start</h3>
+<div class="space-y-stack-md">
+<div class="flex items-start gap-stack-md">
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">campaign</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-background">Orientation Session</p>
+<p class="text-xs text-on-surface-variant">Today at 4:00 PM</p>
+</div>
+</div>
+<button class="w-full py-stack-sm bg-gradient-to-b from-primary/90 to-primary text-white font-semibold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                                Join Now
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-lg">
+<!-- Personalized Checklist -->
+<section class="lg:col-span-1">
+<div class="bg-surface-container-low rounded-2xl p-stack-lg h-full soft-bloom border border-outline-variant/30">
+<div class="flex items-center justify-between mb-stack-lg">
+<h3 class="font-headline-md text-headline-md text-on-background">Set Up Profile</h3>
+<span class="text-primary font-bold text-headline-sm">33%</span>
+</div>
+<div class="space-y-gutter">
+<!-- Task 1: Completed -->
+<div class="flex items-center gap-stack-md group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">check</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface-variant line-through">Account Created</p>
+<p class="text-[10px] uppercase tracking-wider font-bold text-primary">Completed</p>
+</div>
+</div>
+<!-- Task 2: Upload Photo -->
+<div class="flex items-center gap-stack-md group cursor-pointer">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">add_a_photo</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-background group-hover:text-primary transition-colors">Upload Photo</p>
+<p class="text-xs text-on-surface-variant">Make your profile personal</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<!-- Task 3: Select Interests -->
+<div class="flex items-center gap-stack-md group cursor-pointer">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">interests</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-background group-hover:text-primary transition-colors">Select Interests</p>
+<p class="text-xs text-on-surface-variant">Personalize your feed</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<!-- Task 4: Link Parent Account -->
+<div class="flex items-center gap-stack-md group cursor-pointer">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">family_restroom</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-background group-hover:text-primary transition-colors">Link Parent Account</p>
+<p class="text-xs text-on-surface-variant">Enable progress sharing</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Courses -->
+<section class="lg:col-span-2">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-headline-md text-headline-md text-on-background">Recommended for You</h3>
+<a class="text-primary font-label-md text-label-md hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Card 1: IELTS -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden soft-bloom hover:-translate-y-1 transition-all duration-300 border border-outline-variant/20">
+<div class="h-40 w-full relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A professional and sleek educational banner for an IELTS preparation course. The scene depicts high-quality stationery, a digital tablet showing language charts, and a world map in the background. The lighting is bright and clean with soft shadows, using a professional color palette of indigo and soft greys to match a premium EdTech brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD79-v0-yEURas9KITbL805D7xutWdgi46UhJ-_Kf762B6KOTtJWvBk4P_sdXVKC7G1DsEui62-0hUokT8qb9vZmc5DucUqc3WHQaN4YFjpaY7Jp2lLyYMUpSD-NNfLM8NH6RKnoCqdVMU5NmbgwIErig7U4dbdfhZGx2MiKAXXE0U379BKrt6ZPy8tua2NLUJm5nOnGqpF97sfLkR7BiPRNveNjQbdtkFFBKaCsEIwWOFjwzOekpQ6Z8scxL-VQnDnHUKWNxdDdEvN')"></div>
+<div class="absolute top-3 left-3 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Top Rated</div>
+</div>
+<div class="p-stack-md">
+<h4 class="font-headline-sm text-headline-sm text-on-background mb-1">IELTS Masterclass</h4>
+<p class="text-sm text-on-surface-variant mb-4">Master the Academic &amp; General training modules with expert tutors.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm font-bold">4.9 (2.1k)</span>
+</div>
+<div class="text-on-background font-bold font-label-md">Free Trial</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Spoken English -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden soft-bloom hover:-translate-y-1 transition-all duration-300 border border-outline-variant/20">
+<div class="h-40 w-full relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="An inviting and vibrant visual representing a Spoken English course. The image features a diverse group of young adults engaged in a friendly conversation in a modern, light-filled campus environment. The style is professional corporate photography with a warm, encouraging atmosphere and a focus on communication and community." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqIHUCz_K36g5sfTaL6UyjRonhk-NJzXA_kQkZ7viymTFp-A79DN-Icpn8vzAwRMcMt_t7myZxmSsTWjsSBvxVSh8GbQhS05F2eEBGIzPPgiWFBSMQo02M3oIz3bJuT-jAfPYllsjPIfV_V16bAV5WOexvLnEw3z-jdF25tk9L5jbjnZUKpRMegKwTSvijIjtjlIOTlXDnN29fSt64ShCWT0nwwTtdtnP-z654Skqh92Ibay3r6FKempUai5Bsa7m4Oz3MP2-yPtGW')"></div>
+<div class="absolute top-3 left-3 bg-secondary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">New</div>
+</div>
+<div class="p-stack-md">
+<h4 class="font-headline-sm text-headline-sm text-on-background mb-1">Spoken English Pro</h4>
+<p class="text-sm text-on-surface-variant mb-4">Build confidence in public speaking and everyday conversations.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm font-bold">4.8 (850)</span>
+</div>
+<div class="text-on-background font-bold font-label-md">Enroll Now</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Learning Path Banner -->
+<div class="mt-stack-lg bg-on-background rounded-2xl p-stack-lg flex flex-col md:flex-row items-center gap-stack-lg relative overflow-hidden">
+<div class="absolute right-0 top-0 w-full h-full opacity-10 pointer-events-none">
+<svg class="h-full w-full" viewbox="0 0 100 100"><circle cx="100" cy="0" fill="white" fill-opacity="0.2" r="50"></circle></svg>
+</div>
+<div class="flex-1 text-center md:text-left relative z-10">
+<h4 class="text-surface-bright font-headline-md text-headline-md mb-1">Not sure where to start?</h4>
+<p class="text-surface-variant text-body-md">Take our 5-minute Skills Assessment to find your perfect path.</p>
+</div>
+<button class="px-stack-lg py-stack-md bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all z-10 whitespace-nowrap">
+                            Start Assessment
+                        </button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer (JSON Reference) -->
+<footer class="w-full py-xl px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md bg-on-surface text-surface-bright mt-section-gap">
+<div class="flex flex-col gap-sm items-center md:items-start">
+<h5 class="font-headline-sm text-headline-sm text-surface-bright">Skill Junction</h5>
+<p class="font-body-sm text-body-sm opacity-60">© 2024 Skill Junction. Academic Modernism in Learning.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-stack-md">
+<a class="text-surface-variant font-body-sm text-body-sm hover:opacity-100 transition-opacity" href="#">Courses</a>
+<a class="text-surface-variant font-body-sm text-body-sm hover:opacity-100 transition-opacity" href="#">Tutors</a>
+<a class="text-surface-variant font-body-sm text-body-sm hover:opacity-100 transition-opacity" href="#">About Us</a>
+<a class="text-surface-variant font-body-sm text-body-sm hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-surface-variant font-body-sm text-body-sm hover:opacity-100 transition-opacity" href="#">Contact</a>
+</div>
+</footer>
+<!-- Mobile BottomNavBar (JSON Reference Logic) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md border-t border-outline-variant px-margin-mobile py-2 flex justify-around items-center z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px]">Learn</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px]">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px]">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple interaction script for checklist
+        document.querySelectorAll('.group.cursor-pointer').forEach(item => {
+            item.addEventListener('click', function() {
+                const iconContainer = this.querySelector('.rounded-full');
+                const label = this.querySelector('.font-label-md');
+                const status = this.querySelector('.text-[10px]');
+                const checkIcon = this.querySelector('.material-symbols-outlined');
+
+                if (label.classList.contains('line-through')) return; // Already completed
+
+                iconContainer.classList.remove('border-2', 'border-outline-variant');
+                iconContainer.classList.add('bg-primary');
+                checkIcon.textContent = 'check';
+                checkIcon.classList.remove('text-on-surface-variant');
+                checkIcon.classList.add('text-white');
+                label.classList.add('line-through', 'text-on-surface-variant');
+                
+                if(status) {
+                    status.textContent = 'COMPLETED';
+                    status.classList.add('text-primary');
+                }
+            });
+        });
+    </script>
+</body></html>

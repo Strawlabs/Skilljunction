@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tutor Onboarding Dashboard | Skill Junction</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#191c1e",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-highest": "#e0e3e5",
+                    "tertiary-fixed-dim": "#89ceff",
+                    "on-primary-fixed-variant": "#1d34ba",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#001e2f",
+                    "on-secondary-fixed": "#0b1c30",
+                    "primary-fixed": "#dfe0ff",
+                    "surface-tint": "#3b4fd2",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#d7daff",
+                    "inverse-surface": "#2d3133",
+                    "primary-container": "#3e52d5",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "tertiary-fixed": "#c9e6ff",
+                    "secondary-fixed": "#d3e4fe",
+                    "background": "#f7f9fb",
+                    "secondary-container": "#d0e1fb",
+                    "surface-dim": "#d8dadc",
+                    "inverse-primary": "#bbc3ff",
+                    "on-tertiary-fixed-variant": "#004c6e",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-container": "#bbe1ff",
+                    "on-primary-fixed": "#000d60",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#757686",
+                    "on-secondary-container": "#54647a",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-surface-variant": "#454654",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-container": "#006794",
+                    "error": "#ba1a1a",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#bbc3ff",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#004e71",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#505f76",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#c5c5d7",
+                    "primary": "#2036bd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "section-gap": "64px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-completed { color: #2036bd; }
+        .step-pending { color: #757686; }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .active-pill { background: #3e52d5; color: #ffffff; }
+    </style>
+</head>
+<body class="text-on-surface bg-background">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-12 md:h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">Skill Junction</span>
+<div class="hidden md:flex items-center gap-gutter ml-stack-lg">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Resources</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">JD</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)] overflow-hidden">
+<!-- Sidebar (Hidden on mobile) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low border-r border-outline-variant p-stack-md overflow-y-auto">
+<div class="mb-stack-lg px-xs">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-stack-sm">Management</p>
+<nav class="space-y-1">
+<a class="flex items-center gap-stack-sm bg-primary-container text-on-primary-container rounded-lg px-stack-md py-stack-sm font-semibold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-md text-label-md">Classes</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Earnings</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-md text-label-md">Progress</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg px-stack-md py-stack-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Tutor Community Widget -->
+<div class="mt-auto glass-card p-stack-md border border-outline-variant">
+<p class="font-label-md text-label-md font-bold mb-stack-sm">Tutor Community</p>
+<p class="font-body-sm text-xs text-on-surface-variant mb-stack-md">Connect with 12k+ expert educators worldwide.</p>
+<button class="w-full py-stack-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Join Discussion</button>
+</div>
+<div class="mt-stack-lg pt-stack-md border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-stack-sm text-on-surface-variant px-stack-md py-stack-sm" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-stack-sm text-on-surface-variant px-stack-md py-stack-sm" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-label-md text-label-md text-error">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop bg-background min-h-screen">
+<!-- Header Section -->
+<section class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg md:font-display-lg md:text-display-lg text-on-background mb-stack-sm">Welcome, Educator</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Your journey to empowering students starts here. Let's get your profile verified and your classroom ready for your first students.</p>
+</section>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Progress & Setup -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Multi-step Verification Progress -->
+<div class="glass-card p-stack-lg">
+<div class="flex justify-between items-center mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-background">Verification Status</h2>
+<span class="px-stack-md py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">Action Required</span>
+</div>
+<div class="relative flex items-center justify-between mb-8">
+<!-- Progress Line -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-surface-variant -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 left-0 w-1/3 h-[2px] bg-primary -translate-y-1/2 z-0"></div>
+<!-- Steps -->
+<div class="relative z-10 flex flex-col items-center gap-stack-sm bg-background px-4">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">ID Verified</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-stack-sm bg-background px-4">
+<div class="w-10 h-10 rounded-full border-2 border-primary bg-primary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">upload_file</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Certification</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-stack-sm bg-background px-4">
+<div class="w-10 h-10 rounded-full border-2 border-outline bg-surface-container text-outline flex items-center justify-center opacity-50">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-outline">Background</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-stack-md border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-primary-container bg-primary p-2 rounded-lg">description</span>
+<div>
+<p class="font-label-md text-label-md font-bold">Pending: Teaching Certificate</p>
+<p class="font-body-sm text-xs text-on-surface-variant">Please upload your most recent certification document.</p>
+</div>
+</div>
+<button class="px-stack-lg py-stack-sm bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary/90 transition-colors">Upload</button>
+</div>
+</div>
+<!-- Classroom Setup Guide -->
+<div class="glass-card overflow-hidden">
+<div class="p-stack-lg">
+<h2 class="font-headline-md text-headline-md mb-stack-md">Classroom Setup</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="p-stack-md rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary-container bg-primary/10 p-3 rounded-xl mb-stack-md group-hover:scale-110 transition-transform">video_camera_front</span>
+<h3 class="font-label-md text-label-md font-bold mb-xs">Configure Audio &amp; Video</h3>
+<p class="font-body-sm text-sm text-on-surface-variant">Ensure your lighting and camera settings meet professional standards.</p>
+</div>
+<div class="p-stack-md rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary-container bg-primary/10 p-3 rounded-xl mb-stack-md group-hover:scale-110 transition-transform">edit_note</span>
+<h3 class="font-label-md text-label-md font-bold mb-xs">Draft First Curriculum</h3>
+<p class="font-body-sm text-sm text-on-surface-variant">Use our AI-assisted tool to build your course syllabus in minutes.</p>
+</div>
+<div class="p-stack-md rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary-container bg-primary/10 p-3 rounded-xl mb-stack-md group-hover:scale-110 transition-transform">schedule</span>
+<h3 class="font-label-md text-label-md font-bold mb-xs">Set Teaching Hours</h3>
+<p class="font-body-sm text-sm text-on-surface-variant">Define your weekly availability for automated booking.</p>
+</div>
+<div class="p-stack-md rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary-container bg-primary/10 p-3 rounded-xl mb-stack-md group-hover:scale-110 transition-transform">payments</span>
+<h3 class="font-label-md text-label-md font-bold mb-xs">Payout Details</h3>
+<p class="font-body-sm text-sm text-on-surface-variant">Connect your bank account to receive weekly tuition payouts.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 py-stack-md px-stack-lg flex justify-between items-center">
+<span class="font-body-sm text-sm font-medium text-primary">Need a personalized walkthrough?</span>
+<button class="text-primary font-bold hover:underline">Start Tutorial</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Schedule & Community -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Teaching Schedule Preview -->
+<div class="glass-card p-stack-lg">
+<div class="flex justify-between items-center mb-stack-lg">
+<h2 class="font-label-md text-label-md font-bold text-on-background">Teaching Schedule</h2>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">open_in_new</span>
+</div>
+<div class="space-y-stack-md">
+<!-- Date Item -->
+<div class="flex gap-stack-md pb-stack-md border-b border-outline-variant last:border-0 last:pb-0">
+<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container">
+<span class="text-[10px] font-bold uppercase">Oct</span>
+<span class="text-lg font-bold leading-none">14</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Orientation Session</p>
+<p class="font-body-sm text-xs text-on-surface-variant">09:00 AM — 10:30 AM</p>
+</div>
+</div>
+<div class="flex gap-stack-md pb-stack-md border-b border-outline-variant last:border-0 last:pb-0">
+<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-surface-container text-on-surface-variant">
+<span class="text-[10px] font-bold uppercase">Oct</span>
+<span class="text-lg font-bold leading-none">15</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">First Trial Lesson</p>
+<p class="font-body-sm text-xs text-on-surface-variant">02:00 PM — 03:00 PM</p>
+</div>
+</div>
+<div class="flex gap-stack-md pb-stack-md border-b border-outline-variant last:border-0 last:pb-0">
+<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-surface-container text-on-surface-variant">
+<span class="text-[10px] font-bold uppercase">Oct</span>
+<span class="text-lg font-bold leading-none">17</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Group Workshop</p>
+<p class="font-body-sm text-xs text-on-surface-variant">11:00 AM — 12:30 PM</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-stack-lg py-stack-sm bg-surface-container-high text-on-surface-variant rounded-lg font-label-md hover:bg-surface-dim transition-all">View Full Calendar</button>
+</div>
+<!-- Community Highlight Image -->
+<div class="relative overflow-hidden rounded-2xl h-64 group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A diverse group of professional educators collaborating in a modern, sunlit shared workspace. They are using high-end laptops and digital tablets, surrounded by minimalist wooden furniture and vibrant green indoor plants. The lighting is bright and natural, creating a warm, encouraging atmosphere. The aesthetic is clean and professional with a soft depth of field focusing on their engaged expressions." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRNalgf99scjLCYMU8o1PJtruR0ymasZ8rwQsjQaADRjzdIT8j5oB-HrPzgx0-SpEAugIaiSZUo2jHn5traW38dGEM2rLfq3VKoAqY7QHporGe4pP8C8lxG5QpD9kR9zuWUV3SjN_U0zn04f7BmSDkqZkZkTddX2FERX64UK7iUNqtSQlks0UusAnCw44Da25FXF1UXNxC-BJK-wVKmZA0DnQLpLDg-KfgfUX75gbfoMPRP-9_cPnLcAzQ5yvdcdPhRL3s--Pu9t-8')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg text-on-primary">
+<p class="font-label-md text-label-md font-bold mb-xs">Featured Resource</p>
+<h3 class="font-headline-sm text-headline-sm mb-stack-md">Top 10 Virtual Classroom Engagement Tips</h3>
+<button class="px-stack-md py-stack-sm bg-white/20 backdrop-blur-md border border-white/30 rounded-lg text-xs font-bold hover:bg-white/40 transition-all">Read Guide</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation (Visible only on small screens) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant flex justify-around items-center h-16 z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-bold">Classes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-bold">Calendar</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Community</span>
+</button>
+</nav>
+<!-- Footer (Standard for Desktop) -->
+<footer class="hidden md:flex w-full py-xl px-margin-desktop bg-on-surface text-surface-bright flex-row justify-between items-center gap-md">
+<div class="flex flex-col gap-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-surface-bright">Skill Junction</span>
+<p class="font-body-sm text-body-sm opacity-80">© 2024 Skill Junction. Academic Modernism in Learning.</p>
+</div>
+<div class="flex gap-gutter">
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Courses</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Tutors</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Contact</a>
+</div>
+</footer>
+<script>
+        // Simple Micro-interaction: Hover effect for verification cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

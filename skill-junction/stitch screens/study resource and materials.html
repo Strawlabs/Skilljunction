@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill Junction | Learning Material Repository</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#dfe0ff",
+                      "on-tertiary-fixed": "#001e2f",
+                      "on-secondary-container": "#54647a",
+                      "inverse-primary": "#bbc3ff",
+                      "tertiary-container": "#006794",
+                      "on-background": "#191c1e",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#757686",
+                      "secondary": "#505f76",
+                      "tertiary-fixed": "#c9e6ff",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#f7f9fb",
+                      "surface-tint": "#3b4fd2",
+                      "tertiary": "#004e71",
+                      "on-tertiary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#004c6e",
+                      "on-error": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-primary-fixed": "#000d60",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#89ceff",
+                      "surface": "#f7f9fb",
+                      "primary-container": "#3e52d5",
+                      "on-surface-variant": "#454654",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-dim": "#d8dadc",
+                      "on-primary-container": "#d7daff",
+                      "surface-container": "#eceef0",
+                      "on-secondary-fixed": "#0b1c30",
+                      "surface-container-high": "#e6e8ea",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-tertiary-container": "#bbe1ff",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-primary": "#ffffff",
+                      "primary": "#2036bd",
+                      "inverse-surface": "#2d3133",
+                      "secondary-container": "#d0e1fb",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-low": "#f2f4f6",
+                      "outline-variant": "#c5c5d7",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "background": "#f7f9fb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "section-gap": "64px",
+                      "margin-desktop": "40px",
+                      "stack-lg": "32px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            color: #191c1e;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .sidebar-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface/70 dark:bg-surface-dim/70 sidebar-blur flex flex-col p-4 shadow-2xl shadow-on-background/5 z-50">
+<div class="mb-10 px-2">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Skill Junction</h1>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Mastery Platform</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Courses</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-xl px-4 py-3 font-bold" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-body-md text-body-md">Learning</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md text-body-md">Finance</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-2 pt-4 border-t border-outline-variant">
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-label-md text-label-md shadow-lg active:scale-95 transition-all mb-4">
+                Upgrade Plan
+            </button>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface/70 sidebar-blur flex justify-between items-center px-8 z-40 shadow-sm shadow-on-background/2">
+<div class="flex items-center gap-4 bg-surface-dim/30 px-4 py-2 rounded-full w-96 group transition-all focus-within:ring-2 focus-within:ring-primary/20">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-full placeholder:text-on-surface-variant" placeholder="Search resources, lessons, videos..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-6 mr-6">
+<a class="text-on-secondary-container hover:text-primary font-label-md text-label-md transition-colors" href="#">Tutors</a>
+<a class="text-on-secondary-container hover:text-primary font-label-md text-label-md transition-colors" href="#">Learners</a>
+<a class="text-on-secondary-container hover:text-primary font-label-md text-label-md transition-colors" href="#">Parents</a>
+<a class="text-on-secondary-container hover:text-primary font-label-md text-label-md transition-colors" href="#">Admin</a>
+</nav>
+<div class="flex items-center gap-4 border-l border-outline-variant pl-6">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">chat</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-container overflow-hidden">
+<img alt="Administrator Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgMX1sxxRCli7KMJ7k9IDp4jYEbIFS62hFYUXii1_5rbYi2JBC7m_f3q4hZvIo9kdIqPhkkM6psoKagvab_SO0QC90DMvRsj5Fxcv134VjgBIxcOMqGDwaEkW1y6-8uHj6Q5L0TTNKTtuRxNBhT09rdED-sb7mFQWhjuCVF2Ys_HyuyZYqvRmXC2hsrv9aRv611E2TzluHT017lR2R7NpDfKq8ZDtm4ov7AVN8V_J6CYo5hCG3MzzSCuDHHnCpZArv6wqkexJvvPg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-gutter mb-section-gap">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary-fixed-dim bg-primary px-4 py-1 rounded-lg inline-block mb-4">Learning Materials</h2>
+<h3 class="font-display-lg text-display-lg text-on-surface tracking-tight">Your Knowledge Repository.</h3>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl mt-2">Access all your study resources, from interactive lecture slides to recorded sessions, organized for your success.</p>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-high text-on-surface rounded-xl font-label-md text-label-md hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+                        Pinned
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-high text-on-surface rounded-xl font-label-md text-label-md hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined text-[20px]">history</span>
+                        Recent
+                    </button>
+</div>
+</div>
+<!-- Category Filter Bar -->
+<div class="flex gap-4 mb-stack-lg overflow-x-auto no-scrollbar pb-2">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md whitespace-nowrap">All Courses</button>
+<button class="px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">IELTS Academic</button>
+<button class="px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">TOEFL iBT</button>
+<button class="px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">GRE Quantitative</button>
+<button class="px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">SAT Verbal</button>
+<button class="px-6 py-2 bg-white text-on-surface-variant border border-outline-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-low transition-colors">Duolingo English</button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main Featured Resource (Video) -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative overflow-hidden rounded-3xl bg-surface-container shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-quality still of a recorded educational video session. A professional tutor is visible on a large screen with digital whiteboard overlays showing complex grammar structures. The room setting is a clean, modern studio with soft blue and indigo ambient lighting, creating a professional and focused atmosphere. High-end equipment like a sleek microphone and softbox lights are subtly visible in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq-hLc3ZdMND8KFZ7MsyReHSJDeiN3P4qdaxXafFUSJlvCCpkvxwUOdroz2zzsWgj9YvJSRhx2dXe1O3lfVAQep_DBztDkzyFRR6_cmr1YICUbO-qFEmbdgUGKBLeK79bWaGK1Pkrr7lyCurzJGe7WoED5UtebPDliBdVNGYs0nQhFV97ZCCawgXlIfEd42dlzqNdaKGeY6kJdx8YoYpFHWA9OPcC-a32ZDrcQEAOXLDqd1CnTLmRvLbwLrAH8v-bS2VxjFPCMnIk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-transparent to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-20 h-20 bg-primary/90 text-on-primary rounded-full flex items-center justify-center shadow-2xl backdrop-blur-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-6 left-6 flex gap-2">
+<span class="px-4 py-1.5 bg-tertiary text-on-tertiary rounded-lg font-label-sm text-label-sm uppercase tracking-wider">New</span>
+<span class="px-4 py-1.5 bg-white/20 backdrop-blur-md text-white rounded-lg font-label-sm text-label-sm">45:12</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Advanced IELTS Writing: Task 2 Mastering</h4>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">person</span>
+<span class="font-label-md text-label-md">Dr. Alistair Cook</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="font-label-md text-label-md">Oct 24, 2024</span>
+</div>
+</div>
+</div>
+<button class="p-3 bg-surface-container-highest rounded-xl hover:bg-primary/10 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Sidebar Cards -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- PDF Resource Card -->
+<div class="flex-1 glass-card rounded-3xl p-6 border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-error-container text-on-error-container rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]">picture_as_pdf</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Lecture Slides</span>
+<h5 class="font-headline-md text-headline-md leading-tight mt-0.5">IELTS Speaking Strategies V2.0</h5>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">A comprehensive 45-slide guide covering tone, fluency, and idiomatic expressions for higher scores.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface-variant">12.4 MB • PDF</span>
+<button class="flex items-center gap-2 text-primary font-bold font-label-md text-label-md group-hover:gap-3 transition-all">
+                                View Material <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Doc Resource Card -->
+<div class="flex-1 glass-card rounded-3xl p-6 border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-secondary-container text-on-secondary-container rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]">description</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Practice Set</span>
+<h5 class="font-headline-md text-headline-md leading-tight mt-0.5">TOEFL Vocabulary Drill (250+)</h5>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Curated word list with context sentences and interactive practice exercises for reading comprehension.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface-variant">4.8 MB • DOCX</span>
+<button class="flex items-center gap-2 text-primary font-bold font-label-md text-label-md group-hover:gap-3 transition-all">
+                                Download <span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Secondary Resource Rows -->
+<div class="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mt-4">
+<!-- Smaller Card 1 -->
+<div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20">
+<div class="aspect-square rounded-xl bg-surface-container-low mb-4 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A clean top-down view of a study space. A tablet displays a digital reading comprehension test, flanked by a focused pair of glasses and a sleek stylus. The lighting is bright and natural, reflecting a productive morning study session. The overall aesthetic is minimal, airy, and organized, emphasizing clarity and focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBClsMlS3vrelPfjBRWAWWWyslvUyFtjZiyFQbn_42Vv7JOdpBkWcnFu6O1PaDvr5sp0ohoNjsftfRkFf8pqw4hs3qw0RuTKi_Z8gGhTjDPPRoYUc6c44Qw8DdDcoW4ZBDgc6xOZDaIoHaYBUxH69DskOz5a0bpfPtlbFRo3zLfrk5fhhAsssyR1mykTPD3vw0Wm9GA89qaM6hpLv0VJv8DmCwyFMv5vV9W85J4znbWM4TXYbxu0srePeFHr4j6ygE3lGPIZoLyp1I"/>
+</div>
+<h6 class="font-label-md text-label-md font-bold text-on-surface line-clamp-1 mb-1">GRE Verbal Practice Week 4</h6>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-3">Resource Bundle • Oct 18</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-error text-white flex items-center justify-center text-[10px]">P</div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-primary text-white flex items-center justify-center text-[10px]">V</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_horiz</button>
+</div>
+</div>
+<!-- Smaller Card 2 -->
+<div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20">
+<div class="aspect-square rounded-xl bg-surface-container-low mb-4 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Detailed macro shot of a sleek fountain pen and an open leather-bound journal. The pages are filled with neat, organized study notes in blue ink. The lighting is warm and intellectual, with soft shadows creating depth on the textured paper. The composition is artistic and scholarly, perfect for a high-end educational resource context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnq1TndLDsAfDzd6M0cMFnTFLPfKNK-0U-ZihJ0Tkda6DAnvPF-4OEogajND_1cjg6G0SLTETBoacK9FAcKnRkIoz-1jZ117hKn7z4dhoXFRWwOEjDJJ_FGabbiyHp51zjcxd36hNnzskLR8Lg0ikF5Lr_fyuAKkwhtB5eoTifm2p1ZwV_BMefAmu-062C7ngsRYUDFLXT4T96R_Ng7S2qpCDZaqgH0lu-AhlsvguetXJXMaINT5IM_iVMnHK4r-CGXbMt2cEJgno"/>
+</div>
+<h6 class="font-label-md text-label-md font-bold text-on-surface line-clamp-1 mb-1">Listening Audio Lab: Part 3</h6>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-3">Audio • Oct 15</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-primary/10 text-primary rounded-md">
+<span class="material-symbols-outlined text-[14px]">headphones</span>
+<span class="font-label-sm text-label-sm">Audio</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_horiz</button>
+</div>
+</div>
+<!-- Smaller Card 3 -->
+<div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20">
+<div class="aspect-square rounded-xl bg-surface-container-low mb-4 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A modern, high-tech classroom setting featuring an interactive transparent OLED display showing complex data charts and educational infographics. The background is a soft-focus library with rows of books, blending tradition with futuristic learning. The palette is dominated by cool whites and soft greys, punctuated by vibrant primary blue glowing accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdRUTEXq8y0Pg5iQHA3FuI_rOELBNKMIYV2Mt-o6dVS33_RSC8xMkmHyzpdTPsVJcSdVZyqo8hFjp_lF6J5-PgPVzDg8cXXR1VfEIDacOKfDF3KfmtMZAAJ6shdEMF4FTXKlMZnUpS_b5VllsWlO6kiiM3xwHoe6VhuzHxLEaboYPHvDzU-d7kPjgVLwQaFHJey_kYav-TgdK2NyQ-ZyKXSkNTthsF5ytlXyiH-dVI6g1rY1X3kFakuZWBWyd6QGcxfqj4qA2lzDY"/>
+</div>
+<h6 class="font-label-md text-label-md font-bold text-on-surface line-clamp-1 mb-1">Reading Comprehension Toolkit</h6>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-3">Resource Bundle • Oct 12</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-tertiary-container text-on-tertiary-container rounded-md">
+<span class="material-symbols-outlined text-[14px]">link</span>
+<span class="font-label-sm text-label-sm">Tools</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_horiz</button>
+</div>
+</div>
+<!-- Smaller Card 4 -->
+<div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20">
+<div class="aspect-square rounded-xl bg-surface-container-low mb-4 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A focused close-up of a student's hands typing on a slim, modern laptop keyboard. In the corner of the frame, a steaming cup of coffee and a small succulent add a warm, lifestyle touch to the academic setting. The lighting is soft and golden, suggesting a late afternoon study session that is both comfortable and highly productive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCItwWAg1z1CN9hHMnm1i5-wubdNXpsbIn00D2f3ggRU8GjXNb7OkPW72hRVkxW-ZsD2RyO_-R5VsjdC5sFBV1m6G1h8dsUuOebOasPVpYQJ-_7aft7dVOGoUAadyLU7RQ21MYli9IX2fxxHHvHeqKj9IfNGvCNAbcGzOorrLvvb1uJl6sZ4qKDx35WprZshigvgkQQlKojNeCYp8656yxnzz-XgIkWSVAwLdkzokl2j9__oSDaFMGqSdsecVZ81XX_3GRKhT6j2Dc"/>
+</div>
+<h6 class="font-label-md text-label-md font-bold text-on-surface line-clamp-1 mb-1">Weekly Mock Test Recap - Set B</h6>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-3">Video • Oct 10</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-error-container text-on-error-container rounded-md">
+<span class="material-symbols-outlined text-[14px]">videocam</span>
+<span class="font-label-sm text-label-sm">Session</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_horiz</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 mt-section-gap bg-surface-container-lowest dark:bg-surface-container border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-4">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Skill Junction</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Skill Junction. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Only on relevant screens) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-on-primary rounded-2xl shadow-2xl flex items-center justify-center active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<script>
+        // Simple Micro-interaction for hover effects or search bar behavior
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                // Potential for dynamic JS effects if needed
+            });
+        });
+
+        // Search bar focus behavior
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('bg-white', 'shadow-lg');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('bg-white', 'shadow-lg');
+        });
+    </script>
+</body></html>

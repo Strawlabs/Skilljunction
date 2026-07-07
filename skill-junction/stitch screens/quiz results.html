@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quiz Results | Skill Junction</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .soft-bloom {
+            box-shadow: 0 4px 20px -2px rgba(32, 54, 189, 0.08), 0 2px 10px -2px rgba(32, 54, 189, 0.04);
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.8s ease-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface-container": "#eceef0",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-high": "#e6e8ea",
+                "background": "#f7f9fb",
+                "on-primary-fixed-variant": "#1d34ba",
+                "secondary-fixed": "#d3e4fe",
+                "on-surface-variant": "#454654",
+                "on-tertiary": "#ffffff",
+                "on-tertiary-fixed": "#001e2f",
+                "on-error": "#ffffff",
+                "tertiary-container": "#006794",
+                "on-surface": "#191c1e",
+                "on-secondary-fixed": "#0b1c30",
+                "surface-tint": "#3b4fd2",
+                "on-tertiary-container": "#bbe1ff",
+                "primary-fixed-dim": "#bbc3ff",
+                "inverse-primary": "#bbc3ff",
+                "surface-bright": "#f7f9fb",
+                "tertiary-fixed-dim": "#89ceff",
+                "secondary-container": "#d0e1fb",
+                "tertiary-fixed": "#c9e6ff",
+                "secondary-fixed-dim": "#b7c8e1",
+                "outline": "#757686",
+                "on-tertiary-fixed-variant": "#004c6e",
+                "surface": "#f7f9fb",
+                "secondary": "#505f76",
+                "primary-fixed": "#dfe0ff",
+                "primary": "#2036bd",
+                "inverse-surface": "#2d3133",
+                "surface-variant": "#e0e3e5",
+                "surface-dim": "#d8dadc",
+                "error-container": "#ffdad6",
+                "surface-container-low": "#f2f4f6",
+                "outline-variant": "#c5c5d7",
+                "tertiary": "#004e71",
+                "primary-container": "#3e52d5",
+                "on-secondary-container": "#54647a",
+                "on-primary": "#ffffff",
+                "on-error-container": "#93000a",
+                "error": "#ba1a1a",
+                "on-primary-fixed": "#000d60",
+                "surface-container-highest": "#e0e3e5",
+                "on-background": "#191c1e",
+                "on-secondary": "#ffffff",
+                "on-secondary-fixed-variant": "#38485d",
+                "on-primary-container": "#d7daff",
+                "inverse-on-surface": "#eff1f3"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-desktop": "40px",
+                "stack-sm": "8px",
+                "stack-lg": "32px",
+                "section-gap": "64px",
+                "gutter": "24px",
+                "margin-mobile": "16px",
+                "stack-md": "16px",
+                "container-max": "1280px"
+              },
+              "fontFamily": {
+                "body-md": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-sm": ["Inter"],
+                "headline-md": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md shadow-sm flex justify-between items-center px-gutter h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary-fixed">Skill Junction</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-fixed transition-colors cursor-pointer active:scale-95 transition-transform" href="#">Courses</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-fixed transition-colors cursor-pointer active:scale-95 transition-transform" href="#">My Library</a>
+<a class="font-body-md text-body-md text-primary-fixed font-bold border-b-2 border-primary-fixed transition-colors cursor-pointer active:scale-95 transition-transform" href="#">Results</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant cursor-pointer">apps</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden cursor-pointer active:scale-95 transition-transform">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEOx_emJO0iookTQcszYR6aON2A2A26uRw9kFDclNrBjI7LCanYEU6unGNWnilTyLNsrf1kDbIDCXg21sAi1WvYYnZjN_GS2zeXlhl-GlIl9zPOvkNwP7TIhAsv4lXWD-JchuNNmhA2FGoQDUJ0ziv4nxUDaz-D2uBSIHJ6RSEUiLAdFFLvCBp9i7KXrhy87WK63wYfGdltQIQ8_oCnH9Nx6QbAyuW3329Mj0dyZXXyEbgkrUd49kDFCscRJpA-N4jmczi7UPzg5I"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-64 z-40 bg-surface-container dark:bg-surface-container flex-col gap-base p-4 pt-20">
+<div class="mb-6 px-2">
+<h2 class="font-headline-md text-headline-md text-primary-fixed">Portal</h2>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Management</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg cursor-pointer active:scale-98 duration-150">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all cursor-pointer active:scale-98 duration-150">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-lg text-label-lg">Classes</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg cursor-pointer active:scale-98 duration-150">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-lg text-label-lg">Calendar</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg cursor-pointer active:scale-98 duration-150">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-lg text-label-lg">Progress</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg cursor-pointer active:scale-98 duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</div>
+</div>
+<div class="mt-auto p-4 bg-surface-container-low rounded-xl">
+<p class="text-on-surface-variant font-label-md mb-3">Mastery Level</p>
+<div class="w-full bg-surface-variant h-2 rounded-full mb-4">
+<div class="bg-primary h-full rounded-full" style="width: 72%"></div>
+</div>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-md hover:opacity-90 transition-opacity">Upgrade Plan</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 pt-24 pb-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="max-w-4xl mx-auto">
+<!-- Hero Results Section: Bento Layout Header -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-section-gap">
+<div class="md:col-span-8 glass-card rounded-2xl p-stack-lg soft-bloom animate-fade-in flex flex-col justify-center relative overflow-hidden">
+
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm mb-4">ASSESSMENT COMPLETE</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Quiz Completed!</h1>
+<p class="text-body-lg text-on-surface-variant mb-8 max-w-md">Excellent work on the Advanced React Architecture final exam. You have demonstrated high proficiency in state management and component lifecycle optimization.</p>
+<div class="flex flex-wrap gap-4">
+<button class="flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-label-md soft-bloom hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined">download</span>
+                                Download Certificate
+                            </button>
+<button class="flex items-center gap-2 border-2 border-outline-variant text-on-surface px-6 py-3 rounded-xl font-label-md hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">dashboard</span>
+                                Back to Dashboard
+                            </button>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 glass-card rounded-2xl p-stack-lg soft-bloom flex flex-col items-center justify-center text-center animate-fade-in" style="animation-delay: 0.1s">
+<div class="relative w-40 h-40 mb-4">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-surface-variant stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="text-primary stroke-current progress-ring__circle" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="30.14" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-headline-lg text-on-surface">88</span>
+<span class="font-label-md text-on-surface-variant">out of 100</span>
+</div>
+</div>
+<p class="font-label-lg text-on-surface-variant">Top 5% of Students</p>
+<div class="flex gap-2 mt-4">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-outline-variant">star</span>
+</div>
+</div>
+</div>
+<!-- Question Review Header -->
+<div class="flex items-center justify-between mb-stack-lg animate-fade-in" style="animation-delay: 0.2s">
+<h2 class="font-headline-md text-headline-md text-on-surface">Question Review</h2>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="font-label-sm text-on-surface-variant">Correct (12)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error-container"></div>
+<span class="font-label-sm text-on-surface-variant">Incorrect (3)</span>
+</div>
+</div>
+</div>
+<!-- Detailed Question List -->
+<div class="space-y-stack-md animate-fade-in" style="animation-delay: 0.3s">
+<!-- Question Card 1 (Correct) -->
+<div class="bg-surface-container-lowest rounded-2xl p-gutter soft-bloom border-l-4 border-primary">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-primary bg-primary-fixed px-3 py-1 rounded-lg">Question 01</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="font-body-lg text-on-surface mb-6">Which hook should be used to memoize expensive computations in a functional component?</p>
+<div class="space-y-3">
+<div class="p-4 rounded-xl border-2 border-primary-container bg-primary-container/10 flex items-center justify-between">
+<span class="text-on-surface">useMemo()</span>
+<span class="font-label-sm text-on-primary-fixed-variant">Your Answer</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container flex items-center">
+<span class="text-on-surface-variant opacity-60">useCallback()</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container flex items-center">
+<span class="text-on-surface-variant opacity-60">useEffect()</span>
+</div>
+</div>
+</div>
+<!-- Question Card 2 (Incorrect) -->
+<div class="bg-surface-container-lowest rounded-2xl p-gutter soft-bloom border-l-4 border-error">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-error bg-error-container px-3 py-1 rounded-lg">Question 02</span>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">cancel</span>
+</div>
+<p class="font-body-lg text-on-surface mb-6">What is the primary purpose of React.lazy()?</p>
+<div class="space-y-3">
+<div class="p-4 rounded-xl border-2 border-error-container bg-error-container/10 flex items-center justify-between">
+<span class="text-on-surface">To delay component rendering by 500ms</span>
+<span class="font-label-sm text-on-error-container">Your Answer</span>
+</div>
+<div class="p-4 rounded-xl border-2 border-primary bg-primary/5 flex items-center justify-between">
+<span class="text-on-surface font-semibold">To enable code-splitting by loading components dynamically</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="font-label-sm text-on-primary-fixed-variant">Correct Answer</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container flex items-center">
+<span class="text-on-surface-variant opacity-60">To optimize image loading performance</span>
+</div>
+</div>
+<div class="mt-6 p-4 rounded-xl bg-surface-container-low border border-outline-variant/30 italic text-body-md text-on-surface-variant">
+<strong>Explanation:</strong> React.lazy lets you render a dynamic import as a regular component. It's used for code-splitting to reduce the initial bundle size.
+                    </div>
+</div>
+<!-- Question Card 3 (Correct) -->
+<div class="bg-surface-container-lowest rounded-2xl p-gutter soft-bloom border-l-4 border-primary">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-primary bg-primary-fixed px-3 py-1 rounded-lg">Question 03</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="font-body-lg text-on-surface mb-6">In Redux, what is the role of a reducer?</p>
+<div class="space-y-3">
+<div class="p-4 rounded-xl bg-surface-container flex items-center">
+<span class="text-on-surface-variant opacity-60">To dispatch actions to the store</span>
+</div>
+<div class="p-4 rounded-xl border-2 border-primary-container bg-primary-container/10 flex items-center justify-between">
+<span class="text-on-surface">To determine state changes based on actions</span>
+<span class="font-label-sm text-on-primary-fixed-variant">Your Answer</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container flex items-center">
+<span class="text-on-surface-variant opacity-60">To connect the UI to the global state</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="mt-section-gap glass-card rounded-2xl p-stack-lg soft-bloom text-center animate-fade-in" style="animation-delay: 0.4s">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Ready for the next challenge?</h3>
+<p class="text-body-md text-on-surface-variant mb-8">You've mastered the basics. Start the "Scalable Enterprise Patterns" module to earn your next badge.</p>
+<div class="flex justify-center">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-xl font-label-md soft-bloom hover:bg-on-primary-fixed-variant transition-all flex items-center gap-2">
+                        Start Next Module
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-4">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-md text-headline-md text-primary-fixed mb-1">Skill Junction</span>
+<p class="font-label-md text-label-md text-on-surface-variant">© 2024 Skill Junction. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Academic Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Privacy Center</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Help Desk</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Bar -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-xl border-t border-outline-variant/30 flex justify-around items-center h-16 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-semibold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="text-[10px] font-semibold">Results</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-semibold">Calendar</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-semibold">Profile</span>
+</button>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-0 right-0 -z-10 w-1/2 h-screen opacity-30 pointer-events-none overflow-hidden">
+<div class="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-secondary/10 rounded-full blur-[80px]"></div>
+</div>
+<script>
+        // Micro-interaction for Progress Ring
+        document.addEventListener('DOMContentLoaded', () => {
+            const circle = document.querySelector('.progress-ring__circle');
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+            
+            const setProgress = (percent) => {
+                const offset = circumference - (percent / 100 * circumference);
+                circle.style.strokeDashoffset = offset;
+            }
+            
+            // Set it after a short delay for animation effect
+            setTimeout(() => {
+                setProgress(88);
+            }, 300);
+        });
+    </script>
+</body></html>

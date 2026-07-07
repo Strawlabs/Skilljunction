@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Aging &amp; Follow-up | Skill Junction</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "inverse-primary": "#bbc3ff",
+                        "inverse-surface": "#2d3133",
+                        "surface": "#f7f9fb",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-secondary-container": "#54647a",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#d7daff",
+                        "tertiary-container": "#006794",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-container": "#3e52d5",
+                        "outline": "#757686",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dfe0ff",
+                        "background": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-container": "#bbe1ff",
+                        "secondary": "#505f76",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-primary-fixed": "#000d60",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-surface-variant": "#454654",
+                        "outline-variant": "#c5c5d7",
+                        "tertiary": "#004e71",
+                        "surface-tint": "#3b4fd2",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "on-tertiary-fixed": "#001e2f",
+                        "primary": "#2036bd",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "surface-bright": "#f7f9fb",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "section-gap": "64px",
+                        "stack-md": "16px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .aging-bar-0 { height: 40%; }
+        .aging-bar-16 { height: 75%; }
+        .aging-bar-30 { height: 100%; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-bold text-primary-fixed">Skill Junction</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#">Dashboard</a>
+<a class="text-primary-fixed border-b-2 border-primary-fixed pb-1 font-label-md text-label-md" href="#">Analytics</a>
+<a class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#">Courses</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high rounded-full transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high rounded-full transition-colors" data-icon="inbox">inbox</button>
+<img alt="User profile photo" class="w-10 h-10 rounded-full object-cover border-2 border-primary-fixed" data-alt="A professional headshot of a middle-aged male administrator with a warm smile, wearing a modern blue shirt. The lighting is soft and diffused, typical of a high-end corporate office, with a blurred tech-focused workspace in the background. The aesthetic is clean, professional, and follows a light-mode color palette with soft indigos and whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC2E2xqcPwksIm1XShBZVM-DdL6FYzKMzXABNiBvlVqJJAigVn0LnFQXocXdGVZ_1wm1YH1RGhyBK2iMvupCJ8KIlXApBePxok2mXVGxf_-R-3u1NIdOhe65PixYUjIdVPAHoLrxX7VbRAM1VnUdR20vTqgWQoFLj1X4bQvRzDvd8SfvOeP2KKYZvs33ixzHTQLNUII87uYRkHRc6ziYrYrpm-9yuQxnx0NLWVeUoDHzfdyUYz9zEBUQ9iK8FbOdGQbMXa92KN0Ug"/>
+</div>
+</nav>
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest flex flex-col py-6 border-r border-outline-variant hidden md:flex">
+<div class="px-6 mb-8 mt-16">
+<div class="text-headline-md font-headline-md text-primary-fixed">Skill Junction</div>
+<div class="text-on-surface-variant text-label-sm font-label-sm">Innovation Portal</div>
+</div>
+<nav class="flex-1 px-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200" data-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200" data-icon="school">school</span>
+<span class="font-label-lg text-label-lg">My Courses</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200" data-icon="timeline">timeline</span>
+<span class="font-label-lg text-label-lg">Learning Path</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-label-lg text-label-lg">Certifications</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 duration-200" data-icon="insights">insights</span>
+<span class="font-label-lg text-label-lg">Analytics</span>
+</a>
+</nav>
+<div class="px-4 mt-auto border-t border-outline-variant pt-6 flex flex-col gap-1">
+<button class="w-full bg-primary-container text-on-primary-container rounded-lg py-3 font-label-lg text-label-lg mb-4 hover:shadow-lg transition-all active:scale-95">Upgrade to Pro</button>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 md:pl-72 pr-margin-desktop pb-section-gap min-h-screen">
+<header class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Payment Aging &amp; Follow-up</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Track overdue fees and manage accounts receivable across all learning modules.</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="flex items-center gap-2 bg-surface-container-highest text-on-surface-variant px-6 py-3 rounded-xl font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span> Export CSV
+                </button>
+<button class="flex items-center gap-2 bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-label-md text-label-md hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span> Batch Remind
+                </button>
+</div>
+</header>
+<!-- Bento Grid for Overview -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-section-gap">
+<!-- Summary Aging Chart Card -->
+<div class="md:col-span-2 glass-card rounded-2xl p-6 flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-md text-headline-md">Aging Overview</h2>
+<span class="text-on-surface-variant text-label-sm font-label-sm">Updated 2m ago</span>
+</div>
+<div class="flex-1 flex items-end justify-around gap-12 pt-8">
+<div class="flex flex-col items-center flex-1 max-w-[120px]">
+<div class="w-full bg-secondary-container rounded-t-xl aging-bar-0 transition-all duration-500 relative group cursor-help">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">$12,450.00</div>
+</div>
+<span class="mt-4 font-label-md text-label-md text-on-secondary-container">0-15 Days</span>
+</div>
+<div class="flex flex-col items-center flex-1 max-w-[120px]">
+<div class="w-full bg-primary-container rounded-t-xl aging-bar-16 transition-all duration-500 relative group cursor-help">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">$28,920.00</div>
+</div>
+<span class="mt-4 font-label-md text-label-md text-primary">16-30 Days</span>
+</div>
+<div class="flex flex-col items-center flex-1 max-w-[120px]">
+<div class="w-full bg-error-container rounded-t-xl aging-bar-30 transition-all duration-500 relative group cursor-help">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">$45,100.00</div>
+</div>
+<span class="mt-4 font-label-md text-label-md text-error">30+ Days</span>
+</div>
+</div>
+</div>
+<!-- Total Outstanding Card -->
+<div class="bg-primary text-on-primary rounded-2xl p-8 flex flex-col justify-between shadow-xl relative overflow-hidden">
+<div class="z-10">
+<p class="font-label-md text-label-md opacity-80 mb-2 uppercase tracking-wider">Total Overdue</p>
+<p class="text-4xl font-bold">$86,470</p>
+</div>
+<div class="z-10 bg-on-primary/10 rounded-xl p-4 mt-8">
+<div class="flex justify-between items-center mb-2">
+<span class="text-label-sm font-label-sm">Collection Rate</span>
+<span class="text-label-sm font-label-sm">84%</span>
+</div>
+<div class="w-full bg-white/20 h-2 rounded-full overflow-hidden">
+<div class="bg-white h-full w-[84%] rounded-full"></div>
+</div>
+</div>
+<!-- Abstract Geometric Decoration -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -top-20 -left-20 w-60 h-60 bg-white/5 rounded-full blur-2xl"></div>
+</div>
+</section>
+<!-- Payment Alerts List -->
+<section class="bg-surface-container-lowest rounded-3xl p-margin-desktop shadow-sm border border-outline-variant">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-stack-lg gap-stack-md">
+<h3 class="font-headline-md text-headline-md">Active Payment Alerts</h3>
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-64" placeholder="Search student or parent..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto scroll-hide">
+<table class="w-full border-collapse">
+<thead>
+<tr class="text-left border-b border-outline-variant">
+<th class="pb-4 font-label-lg text-label-lg text-on-surface-variant">Student Details</th>
+<th class="pb-4 font-label-lg text-label-lg text-on-surface-variant">Status</th>
+<th class="pb-4 font-label-lg text-label-lg text-on-surface-variant">Aging</th>
+<th class="pb-4 font-label-lg text-label-lg text-on-surface-variant">Balance</th>
+<th class="pb-4 font-label-lg text-label-lg text-on-surface-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Entry 1 -->
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">JS</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Julian Sterling</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Advanced UI Design</p>
+</div>
+</div>
+</td>
+<td class="py-6">
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full text-label-sm font-label-sm">Critical</span>
+</td>
+<td class="py-6">
+<p class="font-label-md text-label-md text-error">42 Days Overdue</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Due: Oct 12, 2023</p>
+</td>
+<td class="py-6">
+<p class="font-headline-md text-headline-md font-semibold text-on-surface">$2,450.00</p>
+</td>
+<td class="py-6 text-right">
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span> Send Reminder
+                                </button>
+</td>
+</tr>
+<!-- Entry 2 -->
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center font-bold text-on-tertiary-container">EP</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Elena Petrov</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Full Stack Dev Bootcamp</p>
+</div>
+</div>
+</td>
+<td class="py-6">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm font-label-sm">Pending</span>
+</td>
+<td class="py-6">
+<p class="font-label-md text-label-md text-on-surface">12 Days Overdue</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Due: Nov 10, 2023</p>
+</td>
+<td class="py-6">
+<p class="font-headline-md text-headline-md font-semibold text-on-surface">$1,200.00</p>
+</td>
+<td class="py-6 text-right">
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span> Send Reminder
+                                </button>
+</td>
+</tr>
+<!-- Entry 3 -->
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center font-bold text-on-primary-container">MW</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Marcus Wright</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">AI Engineering Mastery</p>
+</div>
+</div>
+</td>
+<td class="py-6">
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full text-label-sm font-label-sm">At Risk</span>
+</td>
+<td class="py-6">
+<p class="font-label-md text-label-md text-error">28 Days Overdue</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Due: Oct 26, 2023</p>
+</td>
+<td class="py-6">
+<p class="font-headline-md text-headline-md font-semibold text-on-surface">$3,800.00</p>
+</td>
+<td class="py-6 text-right">
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span> Send Reminder
+                                </button>
+</td>
+</tr>
+<!-- Entry 4 -->
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-dim flex items-center justify-center font-bold text-on-surface-variant">SC</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Sophia Chen</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Product Management Pro</p>
+</div>
+</div>
+</td>
+<td class="py-6">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-sm font-label-sm">Pending</span>
+</td>
+<td class="py-6">
+<p class="font-label-md text-label-md text-on-surface">8 Days Overdue</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Due: Nov 14, 2023</p>
+</td>
+<td class="py-6">
+<p class="font-headline-md text-headline-md font-semibold text-on-surface">$950.00</p>
+</td>
+<td class="py-6 text-right">
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span> Send Reminder
+                                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-8 flex items-center justify-between">
+<p class="text-label-sm font-label-sm text-on-surface-variant">Showing 4 of 32 entries</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors material-symbols-outlined" data-icon="chevron_left">chevron_left</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors material-symbols-outlined" data-icon="chevron_right">chevron_right</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container-lowest border-t border-outline-variant">
+<div>
+<span class="font-headline-md text-headline-md text-primary-fixed block mb-2">Skill Junction</span>
+<p class="text-on-surface-variant font-label-md text-label-md">© 2024 Skill Junction. Accelerating Growth.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary-fixed transition-colors" href="#">Contact</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary-fixed transition-colors" href="#">About Us</a>
+</div>
+</footer>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (icon && icon.textContent === 'send') {
+                    const originalContent = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span> Sending...';
+                    this.classList.add('opacity-75');
+                    this.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span> Sent';
+                        this.classList.replace('bg-primary', 'bg-tertiary');
+                        setTimeout(() => {
+                            this.innerHTML = originalContent;
+                            this.classList.replace('bg-tertiary', 'bg-primary');
+                            this.classList.remove('opacity-75');
+                            this.disabled = false;
+                        }, 2000);
+                    }, 1000);
+                }
+            });
+        });
+
+        // Hover effect for bars
+        const bars = document.querySelectorAll('.aging-bar-0, .aging-bar-16, .aging-bar-30');
+        bars.forEach(bar => {
+            bar.addEventListener('mouseenter', () => {
+                bar.style.transform = 'scaleY(1.05)';
+            });
+            bar.addEventListener('mouseleave', () => {
+                bar.style.transform = 'scaleY(1)';
+            });
+        });
+    </script>
+</body></html>
