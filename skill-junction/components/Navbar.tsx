@@ -20,8 +20,8 @@ export function Navbar() {
             <span className="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">account_circle</span>
           </Link>
         </div>
-        <Link href="/auth/signup">
-          <button className="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-xl text-sm hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 font-bold">Join Class</button>
+        <Link href="/register?role=learner">
+          <button className="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-xl text-label-md hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 font-bold">Join Class</button>
         </Link>
       </div>
     </header>
